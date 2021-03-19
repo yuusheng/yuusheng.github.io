@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kevin-lier.github.io/</id>
     <title>AurorPolaire</title>
-    <updated>2021-03-19T07:21:28.487Z</updated>
+    <updated>2021-03-19T07:24:48.990Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kevin-lier.github.io/"/>
     <link rel="self" href="https://kevin-lier.github.io/atom.xml"/>
@@ -18,7 +18,7 @@
         <updated>2021-03-19T07:11:50.000Z</updated>
         <content type="html"><![CDATA[<pre><code>    最近一直在忙着准备暑假实习的事情,要学的东西好多,越学越觉得啥都不会org
     
-    博客更新这边也总是出问题,这次博客搭建是用Gridea做的,但是可能是我自己的电脑的问题,GitHub Page总是同步不上去  搞得人形态有点小崩hh 不过还好
+    博客更新这边也总是出问题,这次博客搭建是用Gridea做的,但是可能是我自己的电脑的问题,GitHub Page总是同步不上去  搞得人形态有点小崩hh 不过还好  暂时就先用Gridea吧,暑假结束应该会自己写一个主题换个平台发布
     
     过几天清明或者五一有可能两个室友都要出去找女朋友😤一个人在宿舍表示非常烦人.
 
