@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kevin-lier.github.io/</id>
     <title>AurorPolaire</title>
-    <updated>2021-03-19T07:10:23.618Z</updated>
+    <updated>2021-03-19T07:18:36.592Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kevin-lier.github.io/"/>
     <link rel="self" href="https://kevin-lier.github.io/atom.xml"/>
@@ -10,6 +10,23 @@
     <logo>https://kevin-lier.github.io/images/avatar.png</logo>
     <icon>https://kevin-lier.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, AurorPolaire</rights>
+    <entry>
+        <title type="html"><![CDATA[一些吐槽3.19]]></title>
+        <id>https://kevin-lier.github.io/yi-xie-tu-cao-319/</id>
+        <link href="https://kevin-lier.github.io/yi-xie-tu-cao-319/">
+        </link>
+        <updated>2021-03-19T07:11:50.000Z</updated>
+        <content type="html"><![CDATA[<pre><code>    最近一直在忙着准备暑假实习的事情,要学的东西好多,越学越觉得啥都不会org
+    
+    博客更新这边也总是出问题,这次博客搭建是用Gridea做的,但是可能是我自己的电脑的问题,GitHub Page总是同步不上去  搞得人形态有点小崩hh 不过还好
+    
+    过几天清明或者五一有可能两个室友都要出去找女朋友😤一个人在宿舍表示非常烦人.
+
+    过一阵有时间可能会把网站迁到yuusheng.cn  嘿嘿斥巨资购买了.cn这个顶级域名,其实site也还行,但是总感觉逼格不是很够哈哈,而且很令我生气的是yuusheng.com竟然是一个???网站,大家可以自行访问,记得别在公共场所访问,否则你可能会和我的好朋友一样经理社会性死亡哈哈
+
+    哦哦对还有前几天研究域名的时候发现了yuusheng的谐音是余生,怎么感觉还有点浪漫哈哈哈</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[小程序开发]]></title>
         <id>https://kevin-lier.github.io/xiao-cheng-xu-kai-fa/</id>
