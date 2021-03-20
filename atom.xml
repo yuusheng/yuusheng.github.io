@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kevin-lier.github.io/</id>
     <title>AurorePolaire</title>
-    <updated>2021-03-20T08:34:47.513Z</updated>
+    <updated>2021-03-20T08:35:33.842Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kevin-lier.github.io/"/>
     <link rel="self" href="https://kevin-lier.github.io/atom.xml"/>
@@ -76,7 +76,7 @@
       }
 
 </code></pre>
-<p><img src="https://kevin-lier.github.io//post-images/1616228121027.png" alt="" loading="lazy">!</p>
+<figure data-type="image" tabindex="1"><img src="https://kevin-lier.github.io//post-images/1616228121027.png" alt="" loading="lazy"></figure>
 <p>如果一个接口继承其他接口，那么实现类或结构就需要实现所有接口的成员。</p>
 <h2 id="异常处理">异常处理</h2>
 <p>C# 异常处理时建立在四个关键词之上的：<strong>try</strong>、<strong>catch</strong>、<strong>finally</strong> 和 <strong>throw</strong>。</p>
