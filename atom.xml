@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kevin-lier.github.io/</id>
     <title>AurorPolaire</title>
-    <updated>2021-03-20T01:20:37.713Z</updated>
+    <updated>2021-03-20T01:36:18.350Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kevin-lier.github.io/"/>
     <link rel="self" href="https://kevin-lier.github.io/atom.xml"/>
@@ -10,6 +10,26 @@
     <logo>https://kevin-lier.github.io/images/avatar.png</logo>
     <icon>https://kevin-lier.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, AurorPolaire</rights>
+    <entry>
+        <title type="html"><![CDATA[博客发展历程]]></title>
+        <id>https://kevin-lier.github.io/bo-ke-fa-zhan-li-cheng/</id>
+        <link href="https://kevin-lier.github.io/bo-ke-fa-zhan-li-cheng/">
+        </link>
+        <updated>2021-03-20T01:26:03.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>
+<h3 id="20212-正式开始更新博客-使用gridea静态博客生成-typoramarkdown编辑器">2021.2  正式开始更新博客  使用Gridea(静态博客生成)  Typora(Markdown编辑器)</h3>
+<p>​	缺点:连到GitHub pages上面经常无法同步,同步完全靠运气,定制性比较差</p>
+<p>​	优点:有客户端,操作简单,学习成本较低</p>
+</li>
+<li>
+<h3 id="2021315-博客增加自定义域名yuushengsite">2021.3.15  博客增加自定义域名yuusheng.site</h3>
+</li>
+<li></li>
+</ul>
+<p>​</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[一些吐槽3.19]]></title>
         <id>https://kevin-lier.github.io/yi-xie-tu-cao-319/</id>
