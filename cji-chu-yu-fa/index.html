@@ -149,7 +149,7 @@
         <article class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
             <figure class="animate-box">
                 
-                    <img src="https://kevin-lier.github.io//post-images/mvc-ru-men.jpg" alt="MVC入门" class="img-responsive">
+                    <img src="https://kevin-lier.github.io//post-images/cji-chu-yu-fa.jpg" alt="C#基础语法" class="img-responsive">
                 
             </figure>
             <span class="fh5co-meta animate-box">
@@ -161,76 +161,107 @@
                     </div>
                 
             </span>
-            <h2 class="fh5co-article-title animate-box">MVC入门</h2>
+            <h2 class="fh5co-article-title animate-box">C#基础语法</h2>
             <ol class="breadcrumb fh5co-meta fh5co-date animate-box" style="margin-bottom:0; background-color:#f8f9fa">
-                <li>2021-02-24</li>
-                <li>124字</li>
-                <li>1 min read</li>
+                <li>2021-03-20</li>
+                <li>533字</li>
+                <li>3 min read</li>
             </ol>
 
             <div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-left content-article">
                 <div class="row">
                     <div class="col-md-12 animate-box post-content">
-                        <p> <blockquote>
-<p>为了公司实习学习MVC架构，一起看看吧</p>
-</blockquote>
-<h2 id="mvc结构"><strong>MVC结构</strong></h2>
-<ol>
-<li>App_Start</li>
-</ol>
+                        <p> <h2 id="输入与输出">输入与输出</h2>
+<p>​	输入: Console.WriteLine(&quot;输入语句&quot;);  其中字符串可以用前面加<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">的</mi><mi mathvariant="normal">方</mi><mi mathvariant="normal">法</mi><mi mathvariant="normal">在</mi><mi mathvariant="normal">字</mi><mi mathvariant="normal">符</mi><mi mathvariant="normal">串</mi><mi mathvariant="normal">中</mi><mi mathvariant="normal">直</mi><mi mathvariant="normal">接</mi><mi mathvariant="normal">加</mi><mi mathvariant="normal">入</mi><mi mathvariant="normal">变</mi><mi mathvariant="normal">量</mi></mrow><annotation encoding="application/x-tex">的方法在字符串中直接加入变量</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">方</span><span class="mord cjk_fallback">法</span><span class="mord cjk_fallback">在</span><span class="mord cjk_fallback">字</span><span class="mord cjk_fallback">符</span><span class="mord cjk_fallback">串</span><span class="mord cjk_fallback">中</span><span class="mord cjk_fallback">直</span><span class="mord cjk_fallback">接</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">入</span><span class="mord cjk_fallback">变</span><span class="mord cjk_fallback">量</span></span></span></span>&quot;**{i}&quot;</p>
+<p>​	输出:Console.WriteLine(&quot;输出语句&quot;);</p>
+<h2 id="遍历数组">遍历数组</h2>
+<pre><code class="language-c#">            foreach (int j in n)
+            {
+                
+                int i = j - 100;
+                Console.WriteLine($&quot;{j}&quot;);
+            }
+</code></pre>
+<h2 id="类">类</h2>
+<p>​	C#类的静态成员:类似于全局变量</p>
+<p>​	静态函数只能访问静态变量 无法访问非静态变量</p>
+<p>​	<strong>C#中类的继承用&quot;:&quot;</strong></p>
+<p>​	抽象类存在的意义是一些类并不能被实例化, 但是需要被继承</p>
+<pre><code class="language-c#">var shapes = new List&lt;Shape&gt;    // List&lt;Shap&gt;为一个Shap类的列表
+        {
+            new Rectangle(),
+            new Triangle(),
+            new Circle()
+        };
+
+</code></pre>
+<p>​	类中成员初始化与运算符重载</p>
+<pre><code class="language-c#">class Box
+   {
+      private double length;      // 长度
+      private double breadth;     // 宽度
+      private double height;      // 高度
+
+      public double getVolume()
+      {
+         return length * breadth * height;
+      }
+      public void setLength( double len )
+      {
+         length = len;
+      }
+
+      public void setBreadth( double bre )
+      {
+         breadth = bre;
+      }
+
+      public void setHeight( double hei )
+      {
+         height = hei;
+      }
+      // 重载 + 运算符来把两个 Box 对象相加
+      public static Box operator+ (Box b, Box c)
+      {
+         Box box = new Box();
+         box.length = b.length + c.length;
+         box.breadth = b.breadth + c.breadth;
+         box.height = b.height + c.height;
+         return box;
+      }
+
+</code></pre>
+<p><img src="https://kevin-lier.github.io//post-images/1616228121027.png" alt="" loading="lazy">!</p>
+<p>如果一个接口继承其他接口，那么实现类或结构就需要实现所有接口的成员。</p>
+<h2 id="异常处理">异常处理</h2>
+<p>C# 异常处理时建立在四个关键词之上的：<strong>try</strong>、<strong>catch</strong>、<strong>finally</strong> 和 <strong>throw</strong>。</p>
 <ul>
-<li>Bundleconfig:<u>打包器</u></li>
+<li><strong>try</strong>：一个 try 块标识了一个将被激活的特定的异常的代码块。后跟一个或多个 catch 块。</li>
+<li><strong>catch</strong>：程序通过异常处理程序捕获异常。catch 关键字表示异常的捕获。</li>
+<li><strong>finally</strong>：finally 块用于执行给定的语句，不管异常是否被抛出都会执行。例如，如果您打开一个文件，不管是否出现异常文件都要被关闭。</li>
+<li><strong>throw</strong>：当问题出现时，程序抛出一个异常。使用 throw 关键字来完成。</li>
 </ul>
-<blockquote>
-<p>更新时按照固定的格式更换js文件</p>
-</blockquote>
-<ul>
-<li>FilterConfig:<u>过滤器</u></li>
-<li>RouteConfig:<u>路由配置</u></li>
-</ul>
-<ol start="2">
-<li>
-<p>Content<br>
-bootstrap的css样式和本身的site</p>
-</li>
-<li>
-<p>fonts<br>
-bootstrap 中的字体和图片</p>
-</li>
-<li>
-<p>Scripts<br>
-js文件</p>
-</li>
-<li>
-<p>MVC</p>
-<ul>
-<li>
-<p>Models</p>
-</li>
-<li>
-<p>Views</p>
-<ul>
-<li>
-<p>Home       <em>与Controler一一对应</em></p>
-</li>
-<li>
-<p>Shared</p>
-</li>
-</ul>
-<p>Layout 中的@renderbody即主题渲染,会用About中的文件替代</p>
-</li>
-<li>
-<p>Controllers</p>
-</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>由地址栏访问控制器 通过models过滤 view中过滤然后显示出来</p>
-</blockquote>
-<ol start="6">
-<li></li>
-</ol>
+<pre><code class="language-C#">try
+{
+   // 引起异常的语句
+}
+catch( ExceptionName e1 )
+{
+   // 错误处理代码
+}
+catch( ExceptionName e2 )
+{
+   // 错误处理代码
+}
+catch( ExceptionName eN )
+{
+   // 错误处理代码
+}
+finally
+{
+   // 要执行的语句
+}
+</code></pre>
  </p>
                     </div>
                 </div>
@@ -240,9 +271,9 @@ js文件</p>
                         
                             <div class="next-post">
                                 <div class="next">下一篇</div>
-                                <a href="https://kevin-lier.github.io/about/">
+                                <a href="https://kevin-lier.github.io/bo-ke-fa-zhan-li-cheng/">
                                     <h3 class="post-title">
-                                        关于
+                                        博客发展历程
                                     </h3>
                                 </a>
                             </div>
@@ -279,7 +310,10 @@ js文件</p>
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#mvc%E7%BB%93%E6%9E%84"><strong>MVC结构</strong></a></li>
+<li><a href="#%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA">输入与输出</a></li>
+<li><a href="#%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84">遍历数组</a></li>
+<li><a href="#%E7%B1%BB">类</a></li>
+<li><a href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86">异常处理</a></li>
 </ul>
 </li>
 </ul>
