@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kevin-lier.github.io/</id>
     <title>AurorePolaire</title>
-    <updated>2021-03-23T08:38:14.320Z</updated>
+    <updated>2021-03-23T10:31:50.158Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kevin-lier.github.io/"/>
     <link rel="self" href="https://kevin-lier.github.io/atom.xml"/>
@@ -123,6 +123,9 @@ finally
 </li>
 <li>
 <h3 id="2021315-博客增加自定义域名yuushengsite">2021.3.15  博客增加自定义域名yuusheng.site</h3>
+</li>
+<li>
+<h3 id="2021323-博客迁移到wwwyuushengcn">2021.3.23  博客迁移到www.yuusheng.cn</h3>
 </li>
 <li>
 <p>未完待续......</p>
