@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kevin-lier.github.io/</id>
     <title>AurorePolaire</title>
-    <updated>2021-03-23T05:04:19.513Z</updated>
+    <updated>2021-03-23T05:05:02.860Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kevin-lier.github.io/"/>
     <link rel="self" href="https://kevin-lier.github.io/atom.xml"/>
@@ -10,6 +10,15 @@
     <logo>https://kevin-lier.github.io/images/avatar.png</logo>
     <icon>https://kevin-lier.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, AurorePolaire</rights>
+    <entry>
+        <title type="html"><![CDATA[测试]]></title>
+        <id>https://kevin-lier.github.io/ce-shi/</id>
+        <link href="https://kevin-lier.github.io/ce-shi/">
+        </link>
+        <updated>2021-03-23T05:04:50.000Z</updated>
+        <content type="html"><![CDATA[<p>测试</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[C#基础语法]]></title>
         <id>https://kevin-lier.github.io/cji-chu-yu-fa/</id>
