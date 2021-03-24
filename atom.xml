@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kevin-lier.github.io/</id>
     <title>AurorePolaire</title>
-    <updated>2021-03-24T06:39:41.777Z</updated>
+    <updated>2021-03-24T06:41:12.324Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kevin-lier.github.io/"/>
     <link rel="self" href="https://kevin-lier.github.io/atom.xml"/>
@@ -369,6 +369,77 @@ runFun(()=&gt;{
 <p>通过class名称获取元素</p>
 </li>
 </ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[LINQ]]></title>
+        <id>https://kevin-lier.github.io/LINQ/</id>
+        <link href="https://kevin-lier.github.io/LINQ/">
+        </link>
+        <updated>2021-03-24T06:37:59.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="linq">LINQ</h1>
+<h2 id="获取数据源">获取数据源</h2>
+<pre><code class="language-C#">//queryAllCustomers is an IEnumerable&lt;Customer&gt;
+var queryAllCustomers = from cust in customers
+                        select cust;
+</code></pre>
+<blockquote>
+<p>范围变量就像 <code>foreach</code> 循环中的迭代变量，但查询表达式中不会真正发生迭代。 当执行查询时，范围变量将充当对 <code>customers</code> 中每个连续的元素的引用。 由于编译器可以推断 <code>cust</code> 的类型，因此无需显式指定它。 可通过 <code>let</code> 子句引入其他范围变量。</p>
+</blockquote>
+<h2 id="筛选">筛选</h2>
+<pre><code class="language-c#">where cust.City == &quot;London&quot; &amp;&amp; cust.Name == &quot;Devon&quot;
+where cust.City == &quot;London&quot; || cust.City == &quot;Paris&quot;
+</code></pre>
+<h2 id="中间件排序">中间件排序</h2>
+<p>​	<code>orderby</code> 子句根据要排序类型的默认比较器，对返回序列中的元素排序。</p>
+<pre><code class="language-c#">orderby cust.Name ascending
+</code></pre>
+<h2 id="分组">分组</h2>
+<p>​	<code>group</code> 子句用于对根据您指定的键所获得的结果进行分组。</p>
+<pre><code class="language-c#">group cust by cust.City;
+</code></pre>
+<p>​	使用 <code>group</code> 子句结束查询时，结果将以列表的形式列出。 列表中的每个元素都是具有 <code>Key</code> 成员的对象，列表中的元素根据该键被分组。 在循环访问生成组序列的查询时，必须使用嵌套 <code>foreach</code> 循环。 外层循环循环访问每个组，内层循环循环访问每个组的成员。</p>
+<p>​	如果必须引用某个组操作的结果，可使用 <code>into</code> 关键字创建能被进一步查询的标识符。 下列查询仅返回包含两个以上客户的组：</p>
+<pre><code class="language-c#">group cust by cust.City into custGroup
+</code></pre>
+<h2 id="联接">联接</h2>
+<p>​	联接操作在不同序列间创建关联，这些序列在数据源中未被显式模块化。 例如，可通过执行联接来查找所有位置相同的客户和分销商。 在 LINQ 中，<code>join</code> 子句始终作用于对象集合，而非直接作用于数据库表。</p>
+<pre><code class="language-c#">var innerJoinQuery =
+    from cust in customers
+    join dist in distributors on cust.City equals dist.City
+    select new { CustomerName = cust.Name, DistributorName = dist.Name };
+</code></pre>
+<h3 id="内部联接">内部联接</h3>
+<pre><code class="language-c#">var innerJoinQuery =
+    from category in categories
+    join prod in products on category.ID equals prod.CategoryID
+    select new { ProductName = prod.Name, Category = category.Name }; //produces flat sequence
+</code></pre>
+<h3 id="分组联接-含有into表达式">分组联接  <em>含有<code>into</code>表达式</em></h3>
+<pre><code class="language-c#">var innerGroupJoinQuery =
+    from category in categories
+    join prod in products on category.ID equals prod.CategoryID into prodGroup
+    select new { CategoryName = category.Name, Products = prodGroup };
+</code></pre>
+<p>​	还可以将分组联接的结果用作其他子查询的生成器：</p>
+<pre><code class="language-c#">var innerGroupJoinQuery2 =
+    from category in categories
+    join prod in products on category.ID equals prod.CategoryID into prodGroup
+    from prod2 in prodGroup
+    where prod2.UnitPrice &gt; 2.50M
+    select prod2;
+</code></pre>
+<h2 id="等于运算符">等于运算符</h2>
+<blockquote>
+<p><code>join</code> 子句使用 <code>equals</code> 关键字而不是 <code>==</code> 运算符。 <code>equals</code> 关键字只能在 <code>join</code> 子句中使用，并且其与 <code>==</code> 运算符之间存在一个重要差别。 对于 <code>equals</code>，左键使用外部源序列，而右键使用内部源序列。 外部源仅在 <code>equals</code> 的左侧位于范围内，而内部源序列仅在其右侧位于范围内。</p>
+</blockquote>
+<h2 id="对源元素执行操作">对源元素执行操作</h2>
+<blockquote>
+<p>输出序列的每个字符串都将使用[字符串内插]进行格式设置。 内插字符串的左引号前有一个 <code>$</code>，并且可以在内插字符串内部的大括号内执行操作。 执行这些操作后，结果将进行串联。</p>
+</blockquote>
+<pre><code class="language-c#"> IEnumerable&lt;string&gt; output = 
+            radii.Select(r =&gt; $&quot;Area for a circle with a radius of '{r}' = {r * r * Math.PI:F2}&quot;);
+</code></pre>
 ]]></content>
     </entry>
     <entry>
