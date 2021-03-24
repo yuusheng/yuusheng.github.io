@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kevin-lier.github.io/</id>
     <title>AurorePolaire</title>
-    <updated>2021-03-24T06:51:42.887Z</updated>
+    <updated>2021-03-24T09:32:12.598Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kevin-lier.github.io/"/>
     <link rel="self" href="https://kevin-lier.github.io/atom.xml"/>
@@ -444,8 +444,8 @@ where cust.City == &quot;London&quot; || cust.City == &quot;Paris&quot;
     </entry>
     <entry>
         <title type="html"><![CDATA[C#基础语法]]></title>
-        <id>https://kevin-lier.github.io/cji-chu-yu-fa/</id>
-        <link href="https://kevin-lier.github.io/cji-chu-yu-fa/">
+        <id>https://kevin-lier.github.io/C#/</id>
+        <link href="https://kevin-lier.github.io/C#/">
         </link>
         <updated>2021-03-20T08:13:51.000Z</updated>
         <content type="html"><![CDATA[<h2 id="输入与输出">输入与输出</h2>
@@ -547,8 +547,8 @@ finally
     </entry>
     <entry>
         <title type="html"><![CDATA[博客发展历程]]></title>
-        <id>https://kevin-lier.github.io/bo-ke-fa-zhan-li-cheng/</id>
-        <link href="https://kevin-lier.github.io/bo-ke-fa-zhan-li-cheng/">
+        <id>https://kevin-lier.github.io/Development/</id>
+        <link href="https://kevin-lier.github.io/Development/">
         </link>
         <updated>2021-03-20T01:26:03.000Z</updated>
         <content type="html"><![CDATA[<ul>
@@ -572,8 +572,8 @@ finally
     </entry>
     <entry>
         <title type="html"><![CDATA[一些吐槽3.19]]></title>
-        <id>https://kevin-lier.github.io/yi-xie-tu-cao-319/</id>
-        <link href="https://kevin-lier.github.io/yi-xie-tu-cao-319/">
+        <id>https://kevin-lier.github.io/unhappy/</id>
+        <link href="https://kevin-lier.github.io/unhappy/">
         </link>
         <updated>2021-03-19T07:11:50.000Z</updated>
         <content type="html"><![CDATA[<p>​		最近一直在忙着准备暑假实习的事情,要学的东西好多,越学越觉得啥都不会org<br>
@@ -587,8 +587,8 @@ finally
     </entry>
     <entry>
         <title type="html"><![CDATA[小程序开发]]></title>
-        <id>https://kevin-lier.github.io/xiao-cheng-xu-kai-fa/</id>
-        <link href="https://kevin-lier.github.io/xiao-cheng-xu-kai-fa/">
+        <id>https://kevin-lier.github.io/xiaochengxu/</id>
+        <link href="https://kevin-lier.github.io/xiaochengxu/">
         </link>
         <updated>2021-03-06T08:00:58.000Z</updated>
         <content type="html"><![CDATA[<h2 id="目录结构">目录结构</h2>
@@ -1004,8 +1004,8 @@ finally
     </entry>
     <entry>
         <title type="html"><![CDATA[MVC入门]]></title>
-        <id>https://kevin-lier.github.io/mvc-ru-men/</id>
-        <link href="https://kevin-lier.github.io/mvc-ru-men/">
+        <id>https://kevin-lier.github.io/mvc/</id>
+        <link href="https://kevin-lier.github.io/mvc/">
         </link>
         <updated>2021-02-24T09:31:01.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
@@ -1075,7 +1075,7 @@ js文件</p>
         <id>https://kevin-lier.github.io/about/</id>
         <link href="https://kevin-lier.github.io/about/">
         </link>
-        <updated>2019-01-25T11:09:48.000Z</updated>
+        <updated>2021-01-25T11:09:48.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
 <p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
 </blockquote>
