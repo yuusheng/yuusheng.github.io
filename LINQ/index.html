@@ -149,7 +149,7 @@
         <article class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
             <figure class="animate-box">
                 
-                    <img src="https://kevin-lier.github.io//post-images/cji-chu-yu-fa.jpg" alt="C#基础语法" class="img-responsive">
+                    <img src="https://kevin-lier.github.io//post-images/LINQ.jpg" alt="LINQ" class="img-responsive">
                 
             </figure>
             <span class="fh5co-meta animate-box">
@@ -161,126 +161,85 @@
                     </div>
                 
             </span>
-            <h2 class="fh5co-article-title animate-box">C#基础语法</h2>
+            <h2 class="fh5co-article-title animate-box">LINQ</h2>
             <ol class="breadcrumb fh5co-meta fh5co-date animate-box" style="margin-bottom:0; background-color:#f8f9fa">
-                <li>2021-03-20</li>
-                <li>651字</li>
-                <li>3 min read</li>
+                <li>2021-03-24</li>
+                <li>796字</li>
+                <li>4 min read</li>
             </ol>
 
             <div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-left content-article">
                 <div class="row">
                     <div class="col-md-12 animate-box post-content">
-                        <p> <h2 id="输入与输出">输入与输出</h2>
-<p>​	输入: Console.WriteLine(&quot;输入语句&quot;);  其中字符串可以用前面加<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">的</mi><mi mathvariant="normal">方</mi><mi mathvariant="normal">法</mi><mi mathvariant="normal">在</mi><mi mathvariant="normal">字</mi><mi mathvariant="normal">符</mi><mi mathvariant="normal">串</mi><mi mathvariant="normal">中</mi><mi mathvariant="normal">直</mi><mi mathvariant="normal">接</mi><mi mathvariant="normal">加</mi><mi mathvariant="normal">入</mi><mi mathvariant="normal">变</mi><mi mathvariant="normal">量</mi></mrow><annotation encoding="application/x-tex">的方法在字符串中直接加入变量</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">方</span><span class="mord cjk_fallback">法</span><span class="mord cjk_fallback">在</span><span class="mord cjk_fallback">字</span><span class="mord cjk_fallback">符</span><span class="mord cjk_fallback">串</span><span class="mord cjk_fallback">中</span><span class="mord cjk_fallback">直</span><span class="mord cjk_fallback">接</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">入</span><span class="mord cjk_fallback">变</span><span class="mord cjk_fallback">量</span></span></span></span>&quot;**{i}&quot;</p>
-<p>​	输出:Console.WriteLine(&quot;输出语句&quot;);</p>
-<h2 id="遍历数组">遍历数组</h2>
-<pre><code class="language-c#">            foreach (int j in n)
-            {
-                
-                int i = j - 100;
-                Console.WriteLine($&quot;{j}&quot;);
-            }
+                        <p> <h1 id="linq">LINQ</h1>
+<h2 id="获取数据源">获取数据源</h2>
+<pre><code class="language-C#">//queryAllCustomers is an IEnumerable&lt;Customer&gt;
+var queryAllCustomers = from cust in customers
+                        select cust;
 </code></pre>
-<h2 id="类">类</h2>
-<p>​	C#类的静态成员:类似于全局变量</p>
-<p>​	静态函数只能访问静态变量 无法访问非静态变量</p>
-<p>​	<strong>C#中类的继承用&quot;:&quot;</strong></p>
-<p>​	抽象类存在的意义是一些类并不能被实例化, 但是需要被继承</p>
-<pre><code class="language-c#">var shapes = new List&lt;Shape&gt;    // List&lt;Shap&gt;为一个Shap类的列表
-        {
-            new Rectangle(),
-            new Triangle(),
-            new Circle()
-        };
-
+<blockquote>
+<p>范围变量就像 <code>foreach</code> 循环中的迭代变量，但查询表达式中不会真正发生迭代。 当执行查询时，范围变量将充当对 <code>customers</code> 中每个连续的元素的引用。 由于编译器可以推断 <code>cust</code> 的类型，因此无需显式指定它。 可通过 <code>let</code> 子句引入其他范围变量。</p>
+</blockquote>
+<h2 id="筛选">筛选</h2>
+<pre><code class="language-c#">where cust.City == &quot;London&quot; &amp;&amp; cust.Name == &quot;Devon&quot;
+where cust.City == &quot;London&quot; || cust.City == &quot;Paris&quot;
 </code></pre>
-<p>​	类中成员初始化与运算符重载</p>
-<pre><code class="language-c#">class Box
-   {
-      private double length;      // 长度
-      private double breadth;     // 宽度
-      private double height;      // 高度
-
-      public double getVolume()
-      {
-         return length * breadth * height;
-      }
-      public void setLength( double len )
-      {
-         length = len;
-      }
-
-      public void setBreadth( double bre )
-      {
-         breadth = bre;
-      }
-
-      public void setHeight( double hei )
-      {
-         height = hei;
-      }
-      // 重载 + 运算符来把两个 Box 对象相加
-      public static Box operator+ (Box b, Box c)
-      {
-         Box box = new Box();
-         box.length = b.length + c.length;
-         box.breadth = b.breadth + c.breadth;
-         box.height = b.height + c.height;
-         return box;
-      }
-
+<h2 id="中间件排序">中间件排序</h2>
+<p>​	<code>orderby</code> 子句根据要排序类型的默认比较器，对返回序列中的元素排序。</p>
+<pre><code class="language-c#">orderby cust.Name ascending
 </code></pre>
-<figure data-type="image" tabindex="1"><img src="https://kevin-lier.github.io//post-images/1616228121027.png" alt="" loading="lazy"></figure>
-<p>如果一个接口继承其他接口，那么实现类或结构就需要实现所有接口的成员。</p>
-<h2 id="异常处理">异常处理</h2>
-<p>C# 异常处理时建立在四个关键词之上的：<strong>try</strong>、<strong>catch</strong>、<strong>finally</strong> 和 <strong>throw</strong>。</p>
-<ul>
-<li><strong>try</strong>：一个 try 块标识了一个将被激活的特定的异常的代码块。后跟一个或多个 catch 块。</li>
-<li><strong>catch</strong>：程序通过异常处理程序捕获异常。catch 关键字表示异常的捕获。</li>
-<li><strong>finally</strong>：finally 块用于执行给定的语句，不管异常是否被抛出都会执行。例如，如果您打开一个文件，不管是否出现异常文件都要被关闭。</li>
-<li><strong>throw</strong>：当问题出现时，程序抛出一个异常。使用 throw 关键字来完成。</li>
-</ul>
-<pre><code class="language-C#">try
-{
-   // 引起异常的语句
-}
-catch( ExceptionName e1 )
-{
-   // 错误处理代码
-}
-catch( ExceptionName e2 )
-{
-   // 错误处理代码
-}
-catch( ExceptionName eN )
-{
-   // 错误处理代码
-}
-finally
-{
-   // 要执行的语句
-}
+<h2 id="分组">分组</h2>
+<p>​	<code>group</code> 子句用于对根据您指定的键所获得的结果进行分组。</p>
+<pre><code class="language-c#">group cust by cust.City;
 </code></pre>
-<h2 id="异步">异步</h2>
-<ul>
-<li>当某个操作需要花费大量的时间进行处理，若是使用同步编程，那么程序在等待响应的时间内不能处理其他事物，这样效率比较低；而使用异步编程时，在进行等待相应的时间内，程序可以<strong>利用等待的时间处理其他事物</strong>，当得到响应时，再回到响应处继续执行，这样程序的<strong>效率会更高</strong>。</li>
-</ul>
+<p>​	使用 <code>group</code> 子句结束查询时，结果将以列表的形式列出。 列表中的每个元素都是具有 <code>Key</code> 成员的对象，列表中的元素根据该键被分组。 在循环访问生成组序列的查询时，必须使用嵌套 <code>foreach</code> 循环。 外层循环循环访问每个组，内层循环循环访问每个组的成员。</p>
+<p>​	如果必须引用某个组操作的结果，可使用 <code>into</code> 关键字创建能被进一步查询的标识符。 下列查询仅返回包含两个以上客户的组：</p>
+<pre><code class="language-c#">group cust by cust.City into custGroup
+</code></pre>
+<h2 id="联接">联接</h2>
+<p>​	联接操作在不同序列间创建关联，这些序列在数据源中未被显式模块化。 例如，可通过执行联接来查找所有位置相同的客户和分销商。 在 LINQ 中，<code>join</code> 子句始终作用于对象集合，而非直接作用于数据库表。</p>
+<pre><code class="language-c#">var innerJoinQuery =
+    from cust in customers
+    join dist in distributors on cust.City equals dist.City
+    select new { CustomerName = cust.Name, DistributorName = dist.Name };
+</code></pre>
+<h3 id="内部联接">内部联接</h3>
+<pre><code class="language-c#">var innerJoinQuery =
+    from category in categories
+    join prod in products on category.ID equals prod.CategoryID
+    select new { ProductName = prod.Name, Category = category.Name }; //produces flat sequence
+</code></pre>
+<h3 id="分组联接-含有into表达式">分组联接  <em>含有<code>into</code>表达式</em></h3>
+<pre><code class="language-c#">var innerGroupJoinQuery =
+    from category in categories
+    join prod in products on category.ID equals prod.CategoryID into prodGroup
+    select new { CategoryName = category.Name, Products = prodGroup };
+</code></pre>
+<p>​	还可以将分组联接的结果用作其他子查询的生成器：</p>
+<pre><code class="language-c#">var innerGroupJoinQuery2 =
+    from category in categories
+    join prod in products on category.ID equals prod.CategoryID into prodGroup
+    from prod2 in prodGroup
+    where prod2.UnitPrice &gt; 2.50M
+    select prod2;
+</code></pre>
+<h2 id="等于运算符">等于运算符</h2>
+<blockquote>
+<p><code>join</code> 子句使用 <code>equals</code> 关键字而不是 <code>==</code> 运算符。 <code>equals</code> 关键字只能在 <code>join</code> 子句中使用，并且其与 <code>==</code> 运算符之间存在一个重要差别。 对于 <code>equals</code>，左键使用外部源序列，而右键使用内部源序列。 外部源仅在 <code>equals</code> 的左侧位于范围内，而内部源序列仅在其右侧位于范围内。</p>
+</blockquote>
+<h2 id="对源元素执行操作">对源元素执行操作</h2>
+<blockquote>
+<p>输出序列的每个字符串都将使用[字符串内插]进行格式设置。 内插字符串的左引号前有一个 <code>$</code>，并且可以在内插字符串内部的大括号内执行操作。 执行这些操作后，结果将进行串联。</p>
+</blockquote>
+<pre><code class="language-c#"> IEnumerable&lt;string&gt; output = 
+            radii.Select(r =&gt; $&quot;Area for a circle with a radius of '{r}' = {r * r * Math.PI:F2}&quot;);
+</code></pre>
  </p>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12 animate-box">
-                        
-                            <div class="next-post">
-                                <div class="next">下一篇</div>
-                                <a href="https://kevin-lier.github.io/bo-ke-fa-zhan-li-cheng/">
-                                    <h3 class="post-title">
-                                        博客发展历程
-                                    </h3>
-                                </a>
-                            </div>
                         
                     </div>
                 </div>
@@ -312,13 +271,20 @@ finally
 
 <div class="post-toc animated fadeInRight hidden-xs hidden-sm" style="display: none;">
     <ul class="markdownIt-TOC">
-<li>
+<li><a href="#linq">LINQ</a>
 <ul>
-<li><a href="#%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA">输入与输出</a></li>
-<li><a href="#%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84">遍历数组</a></li>
-<li><a href="#%E7%B1%BB">类</a></li>
-<li><a href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86">异常处理</a></li>
-<li><a href="#%E5%BC%82%E6%AD%A5">异步</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E6%BA%90">获取数据源</a></li>
+<li><a href="#%E7%AD%9B%E9%80%89">筛选</a></li>
+<li><a href="#%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8E%92%E5%BA%8F">中间件排序</a></li>
+<li><a href="#%E5%88%86%E7%BB%84">分组</a></li>
+<li><a href="#%E8%81%94%E6%8E%A5">联接</a>
+<ul>
+<li><a href="#%E5%86%85%E9%83%A8%E8%81%94%E6%8E%A5">内部联接</a></li>
+<li><a href="#%E5%88%86%E7%BB%84%E8%81%94%E6%8E%A5-%E5%90%AB%E6%9C%89into%E8%A1%A8%E8%BE%BE%E5%BC%8F">分组联接  <em>含有<code>into</code>表达式</em></a></li>
+</ul>
+</li>
+<li><a href="#%E7%AD%89%E4%BA%8E%E8%BF%90%E7%AE%97%E7%AC%A6">等于运算符</a></li>
+<li><a href="#%E5%AF%B9%E6%BA%90%E5%85%83%E7%B4%A0%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C">对源元素执行操作</a></li>
 </ul>
 </li>
 </ul>

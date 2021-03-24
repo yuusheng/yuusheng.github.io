@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kevin-lier.github.io/</id>
     <title>AurorePolaire</title>
-    <updated>2021-03-23T10:31:50.158Z</updated>
+    <updated>2021-03-24T06:38:05.815Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kevin-lier.github.io/"/>
     <link rel="self" href="https://kevin-lier.github.io/atom.xml"/>
@@ -107,6 +107,10 @@ finally
    // 要执行的语句
 }
 </code></pre>
+<h2 id="异步">异步</h2>
+<ul>
+<li>当某个操作需要花费大量的时间进行处理，若是使用同步编程，那么程序在等待响应的时间内不能处理其他事物，这样效率比较低；而使用异步编程时，在进行等待相应的时间内，程序可以<strong>利用等待的时间处理其他事物</strong>，当得到响应时，再回到响应处继续执行，这样程序的<strong>效率会更高</strong>。</li>
+</ul>
 ]]></content>
     </entry>
     <entry>
