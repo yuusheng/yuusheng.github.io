@@ -151,7 +151,7 @@
         <article class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
             <figure class="animate-box">
                 
-                    <img src="https://kevin-lier.github.io//post-images/mvc.jpg" alt="MVC入门" class="img-responsive">
+                    <img src="https://kevin-lier.github.io//post-images/mvc.jpg" alt="MVC" class="img-responsive">
                 
             </figure>
             <span class="fh5co-meta animate-box">
@@ -163,29 +163,28 @@
                     </div>
                 
             </span>
-            <h2 class="fh5co-article-title animate-box">MVC入门</h2>
+            <h2 class="fh5co-article-title animate-box">MVC</h2>
             <ol class="breadcrumb fh5co-meta fh5co-date animate-box" style="margin-bottom:0; background-color:#f8f9fa">
                 <li>2021-02-24</li>
-                <li>124字</li>
-                <li>1 min read</li>
+                <li>729字</li>
+                <li>4 min read</li>
             </ol>
 
             <div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-left content-article">
                 <div class="row">
                     <div class="col-md-12 animate-box post-content">
-                        <p> <blockquote>
-<p>为了公司实习学习MVC架构，一起看看吧</p>
-</blockquote>
-<h2 id="mvc结构"><strong>MVC结构</strong></h2>
+                        <p> <h2 id="mvc结构"><strong>MVC结构</strong></h2>
 <ol>
 <li>App_Start</li>
 </ol>
 <ul>
-<li>Bundleconfig:<u>打包器</u></li>
-</ul>
+<li>
+<p>Bundleconfig:<u>打包器</u></p>
 <blockquote>
 <p>更新时按照固定的格式更换js文件</p>
 </blockquote>
+</li>
+</ul>
 <ul>
 <li>FilterConfig:<u>过滤器</u></li>
 <li>RouteConfig:<u>路由配置</u></li>
@@ -205,6 +204,8 @@ js文件</p>
 </li>
 <li>
 <p>MVC</p>
+</li>
+</ol>
 <ul>
 <li>
 <p>Models</p>
@@ -217,21 +218,131 @@ js文件</p>
 </li>
 <li>
 <p>Shared</p>
+<p>Layout 中的@renderbody即主题渲染,会用About中的文件替代</p>
 </li>
 </ul>
-<p>Layout 中的@renderbody即主题渲染,会用About中的文件替代</p>
 </li>
 <li>
 <p>Controllers</p>
 </li>
 </ul>
-</li>
-</ol>
 <blockquote>
 <p>由地址栏访问控制器 通过models过滤 view中过滤然后显示出来</p>
 </blockquote>
-<ol start="6">
-<li></li>
+<h3 id="post和get">Post和Get</h3>
+<p>用户访问网站为get方式,在提交某些数据后会通过post访问</p>
+<pre><code class="language-html">
+@{
+    ViewBag.Title = &quot;AddNumbers&quot;;
+    var total = 0;
+    var totalMessage = &quot;&quot;;
+    if (IsPost)
+    {
+
+        // Retrieve the numbers that the user entered.
+        var num1 = Request[&quot;text1&quot;];
+        var num2 = Request[&quot;text2&quot;];
+
+        // Convert the entered strings into integers numbers and add.
+        total = num1.AsInt() + num2.AsInt();
+        totalMessage = &quot;Total = &quot; + total;
+    }
+}
+
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;Add Numbers&lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        body {
+            background-color: beige;
+            font-family: Verdana, Arial;
+            margin: 50px;
+        }
+
+        form {
+            padding: 10px;
+            border-style: solid;
+            width: 250px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;Enter two whole numbers and then click &lt;strong&gt;Add&lt;/strong&gt;.&lt;/p&gt;
+    &lt;form action=&quot;&quot; method=&quot;post&quot;&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;text1&quot;&gt;First Number:&lt;/label&gt;
+            &lt;input type=&quot;text&quot; name=&quot;text1&quot; /&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;text2&quot;&gt;Second Number:&lt;/label&gt;
+            &lt;input type=&quot;text&quot; name=&quot;text2&quot; /&gt;
+        &lt;/p&gt;
+        &lt;p&gt;&lt;input type=&quot;submit&quot; value=&quot;Add&quot; /&gt;&lt;/p&gt;
+    &lt;/form&gt;
+
+    &lt;p&gt;@totalMessage&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>视图模板不应执行业务逻辑或直接与数据库交互</strong>。 相反，视图模板应仅适用于控制器为其提供的数据。</p>
+<p>ViewBag:   将控制器中的数据返回到视图页面.</p>
+<p>例如在cs中声明ViewBag.msg = &quot;hello world&quot;;   那么在cshtml中@ViewBag.msg就会显示hello world</p>
+<p>在控制器里面的数据怎么能在界面校验?</p>
+<p>类的实例化应该在哪里实现?</p>
+<p>httphelper 要用的时候查么?</p>
+<p>using的三个用法:</p>
+<ol>
+<li>
+<p>using+命名空间的名字</p>
+</li>
+<li>
+<p>using+别名</p>
+<p>​	using aClass=NameSpace1.MyClass</p>
+<p>​	using bClass=NameSpace2.MyClass</p>
+<p>​	好处是更加简洁</p>
+</li>
+<li>
+<p>using  定义一个范围,在结束时处理对象.</p>
+<p>用try catch也可以解决但是using更加方便</p>
+</li>
+</ol>
+<p>解决方案是使用 <code>BeginForm</code> 的重载，该重载指定 POST 请求应将搜索信息添加到 URL，并且应将其路由到该 <code>HttpGet</code> 方法的版本 <code>Index</code> 。 将现有的无参数 <code>BeginForm</code> 方法替换为以下标记：</p>
+<pre><code class="language-cshtml">@using (Html.BeginForm(&quot;Index&quot;,&quot;Movies&quot;,FormMethod.Get))
+</code></pre>
+<h2 id="构建解决方案">构建解决方案</h2>
+<ul>
+<li>Apps.Base
+<ul>
+<li>Apps.BLL (业务层)</li>
+<li>Apps.IBLL (业务层<strong>接口</strong>)</li>
+<li>Apps.DAL (数据层)</li>
+<li>Apps.IDAL (数据层<strong>接口</strong>)</li>
+</ul>
+</li>
+<li>Apps.Models (模型)</li>
+<li>Apps.Common(通用类库)</li>
+<li>Apps.Core (核心类库)</li>
+<li>Apps.Locale(多语言文件)</li>
+<li>Apps.WebApi(WebApi)</li>
+<li>Apps.Web(UI层)</li>
+</ul>
+<h2 id="实体">实体</h2>
+<ol>
+<li>
+<p>EF  操作数据库</p>
+</li>
+<li>
+<p>DTO  传输数据</p>
+<p>​	POCO原则(Plain Old C# Object扁平化C#类的对象)</p>
+<p>​	扁平化：不能有对象出现</p>
+</li>
+<li>
+<p>ViewModel   校验数据</p>
+</li>
 </ol>
  </p>
                     </div>
@@ -281,7 +392,13 @@ js文件</p>
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#mvc%E7%BB%93%E6%9E%84"><strong>MVC结构</strong></a></li>
+<li><a href="#mvc%E7%BB%93%E6%9E%84"><strong>MVC结构</strong></a>
+<ul>
+<li><a href="#post%E5%92%8Cget">Post和Get</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9E%84%E5%BB%BA%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">构建解决方案</a></li>
+<li><a href="#%E5%AE%9E%E4%BD%93">实体</a></li>
 </ul>
 </li>
 </ul>

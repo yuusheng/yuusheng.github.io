@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kevin-lier.github.io/</id>
     <title>AurorePolaire</title>
-    <updated>2021-03-25T12:51:41.854Z</updated>
+    <updated>2021-04-03T08:16:34.626Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kevin-lier.github.io/"/>
     <link rel="self" href="https://kevin-lier.github.io/atom.xml"/>
@@ -459,25 +459,87 @@ where cust.City == &quot;London&quot; || cust.City == &quot;Paris&quot;
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[C#基础语法]]></title>
+        <title type="html"><![CDATA[C#]]></title>
         <id>https://kevin-lier.github.io/CS/</id>
         <link href="https://kevin-lier.github.io/CS/">
         </link>
         <updated>2021-03-20T08:13:51.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="输入与输出">输入与输出</h2>
-<p>​	输入: Console.WriteLine(&quot;输入语句&quot;);  其中字符串可以用前面加<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">的</mi><mi mathvariant="normal">方</mi><mi mathvariant="normal">法</mi><mi mathvariant="normal">在</mi><mi mathvariant="normal">字</mi><mi mathvariant="normal">符</mi><mi mathvariant="normal">串</mi><mi mathvariant="normal">中</mi><mi mathvariant="normal">直</mi><mi mathvariant="normal">接</mi><mi mathvariant="normal">加</mi><mi mathvariant="normal">入</mi><mi mathvariant="normal">变</mi><mi mathvariant="normal">量</mi></mrow><annotation encoding="application/x-tex">的方法在字符串中直接加入变量</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">方</span><span class="mord cjk_fallback">法</span><span class="mord cjk_fallback">在</span><span class="mord cjk_fallback">字</span><span class="mord cjk_fallback">符</span><span class="mord cjk_fallback">串</span><span class="mord cjk_fallback">中</span><span class="mord cjk_fallback">直</span><span class="mord cjk_fallback">接</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">入</span><span class="mord cjk_fallback">变</span><span class="mord cjk_fallback">量</span></span></span></span>&quot;**{i}&quot;</p>
-<p>​	输出:Console.WriteLine(&quot;输出语句&quot;);</p>
-<h2 id="遍历数组">遍历数组</h2>
-<pre><code class="language-c#">            foreach (int j in n)
-            {
-                
-                int i = j - 100;
-                Console.WriteLine($&quot;{j}&quot;);
-            }
+        <content type="html"><![CDATA[<h1 id="c基础语法">C#基础语法</h1>
+<h2 id="net">.NET</h2>
+<ul>
+<li>.NET Framework(运行平台)</li>
+<li>Visual Studio(开发工具)</li>
+</ul>
+<h2 id="输入与输出">输入与输出</h2>
+<p>​	输入: Console.ReadLine(&quot;输入语句&quot;);  输入时只能输入字符串类型,如果需要其他类型则需要强制类型转换: 类型.Parse(Console.ReadLine());</p>
+<p>​	输出:</p>
+<ul>
+<li>Console.WriteLine(&quot;输出语句&quot;);其中字符串可以用前面加<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">的</mi><mi mathvariant="normal">方</mi><mi mathvariant="normal">法</mi><mi mathvariant="normal">在</mi><mi mathvariant="normal">字</mi><mi mathvariant="normal">符</mi><mi mathvariant="normal">串</mi><mi mathvariant="normal">中</mi><mi mathvariant="normal">直</mi><mi mathvariant="normal">接</mi><mi mathvariant="normal">加</mi><mi mathvariant="normal">入</mi><mi mathvariant="normal">变</mi><mi mathvariant="normal">量</mi></mrow><annotation encoding="application/x-tex">的方法在字符串中直接加入变量</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">方</span><span class="mord cjk_fallback">法</span><span class="mord cjk_fallback">在</span><span class="mord cjk_fallback">字</span><span class="mord cjk_fallback">符</span><span class="mord cjk_fallback">串</span><span class="mord cjk_fallback">中</span><span class="mord cjk_fallback">直</span><span class="mord cjk_fallback">接</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">入</span><span class="mord cjk_fallback">变</span><span class="mord cjk_fallback">量</span></span></span></span>&quot;**{i}&quot;</li>
+<li>Console.Write(&quot;输出语句&quot;);  输出不换行</li>
+</ul>
+<h3 id="随机数">随机数</h3>
+<pre><code class="language-cs">    Random random = new Random();
+    int no = random.Next(1000, 2000);//max=2000,min=1000
 </code></pre>
+<h2 id="数组">数组</h2>
+<h3 id="遍历数组">遍历数组</h3>
+<pre><code class="language-c#">foreach (int j in n)
+{
+
+    int i = j - 100;
+    Console.WriteLine($&quot;{j}&quot;);
+}
+</code></pre>
+<h3 id="数组特征">数组特征:</h3>
+<ul>
+<li>数组长度固定</li>
+<li>下标从0开始</li>
+<li>数组中所有数据的类型相同</li>
+</ul>
 <h2 id="类">类</h2>
-<p>​	C#类的静态成员:类似于全局变量</p>
-<p>​	静态函数只能访问静态变量 无法访问非静态变量</p>
+<p>​	<em>C#类的静态成员:类似于全局变量</em></p>
+<p>​	<em>静态函数只能访问静态变量 无法访问非静态变量</em></p>
+<p>类的成员：<strong>字段</strong>、<strong>属性</strong>、<strong>方法</strong></p>
+<h3 id="访问修饰符">访问修饰符:</h3>
+<ul>
+<li>public</li>
+<li><strong>private</strong>   <em>default</em></li>
+<li>internal</li>
+</ul>
+<p><strong>字段</strong>一般设置为private，赋值和读取将通过属性来对字段赋值。这样可以保证数据的有效性与安全性。如果不需要对字段进行数据校验，仍然需要属性，这是C#的规范，对于调用者而言，调用者只能使用属性和方法，字段是不允许公开的。而当一个属性不需要对数据进行有效性检验时，可以使用缩写版属性：prop，自动属性和完整属性是完全一样的。</p>
+<pre><code class="language-cs">class Student
+{
+    int id;
+    string stuName;
+    int age;
+
+    public int Age   //属性
+    {
+        //访问器
+        get
+        {
+            return age;
+        }
+        //访问器
+        set
+        {
+            if (value&lt;0|| value&gt;125)
+            {
+                Console.WriteLine(&quot;您输入的年龄是非法的&quot;);
+            }
+            else
+            {
+                age = value;
+            }
+        }
+    }
+}
+static void Main(string[] args)
+{
+    Student stu = new Student();
+    stu.Age = 10;   			 //与public情况下对字段赋值相同
+}
+</code></pre>
 <p>​	<strong>C#中类的继承用&quot;:&quot;</strong></p>
 <p>​	抽象类存在的意义是一些类并不能被实例化, 但是需要被继承</p>
 <pre><code class="language-c#">var shapes = new List&lt;Shape&gt;    // List&lt;Shap&gt;为一个Shap类的列表
@@ -524,8 +586,169 @@ where cust.City == &quot;London&quot; || cust.City == &quot;Paris&quot;
       }
 
 </code></pre>
-<figure data-type="image" tabindex="1"><img src="https://kevin-lier.github.io//post-images/1616228121027.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://kevin-lier.github.io//post-images/1617437554608.png" alt="" loading="lazy"></figure>
 <p>如果一个接口继承其他接口，那么实现类或结构就需要实现所有接口的成员。</p>
+<h2 id="字符串">字符串</h2>
+<ul>
+<li>
+<p>在C#中可以认为字符串是一个字符数组</p>
+</li>
+<li>
+<p>字符串实际上是一个类  <em>暂存池</em></p>
+</li>
+<li>
+<p>当两个字符串相同时，两个字符串会指向同一个内存地址</p>
+<p>object.ReferenceEquals(str1,str2)   判断是否为同一个引用（对象）</p>
+<p>==   基本类型可以判断内容是否相等，不需要调用Equals方法</p>
+</li>
+</ul>
+<h3 id="字符串中的常用方法">字符串中的常用方法</h3>
+<p><em>所有转换操作都不会对原始字符串产生影响</em></p>
+<ul>
+<li>.Length</li>
+<li>.ToUpper() 转大写</li>
+<li>.ToLower() 转小写</li>
+<li>.Substring(startIndex)      .Substring(starIndex,length)</li>
+<li>.IndexOf()</li>
+<li>StringBuilder sb = new StringBuilder()  拼接字符串  用+来拼接字符串是非常耗费性能的。当字符串较多时，应使用新建StringBuilder对象调用Append(i)函数</li>
+</ul>
+<p>枚举：只能在枚举类中选择，不能出现不符合规则的值，保护了数据的有效性。</p>
+<h2 id="值类型-引用类型和装箱拆箱">值类型、引用类型和装箱拆箱</h2>
+<h3 id="值类型">值类型</h3>
+<p><em>byte  short/char  int  long  float  double  decimal  bool  enum</em></p>
+<p>值类型在赋值时传递的是<strong>数值</strong>，修改任意一个数值时另外一个<strong>不会发生变化</strong></p>
+<h3 id="引用类型">引用类型</h3>
+<p>string  object  array</p>
+<p>赋值时传递的是地址，用new才会开辟空间，不然会指向另一个的地址</p>
+<figure data-type="image" tabindex="2"><img src="https://kevin-lier.github.io//post-images/1617437620704.png" alt="" loading="lazy"></figure>
+<p>里式替换法则：父类型的变量可以装子类型的对象</p>
+<p><strong>装箱</strong>：把值类型转换为引用类型</p>
+<ul>
+<li>object obj=1;</li>
+</ul>
+<p><strong>拆箱</strong>：把引用类型转换为值类型</p>
+<ul>
+<li>int c = (int)obj;   //比较浪费性能</li>
+</ul>
+<p>&quot;<strong>+</strong>&quot;拼接操作会开辟一个新的空间</p>
+<h2 id="集合">集合</h2>
+<p>特点</p>
+<ul>
+<li>可以添加或删除元素(可以伸缩)</li>
+<li>集合中装的是object</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>集合中装的是object  由于里式替换原则，不知道里面装的是什么，而拆箱和装箱的类型必须相同</li>
+</ul>
+<h2 id="集合泛型">集合泛型</h2>
+<p>List<T> list = new List<T>;</p>
+<ul>
+<li>
+<p>.Add()		添加</p>
+</li>
+<li>
+<p>.Count()     数量</p>
+</li>
+<li>
+<p>.Count(m=&gt;m%2=0)   偶数数量</p>
+</li>
+<li>
+<p>.Remove(item)      对数据删除</p>
+<p>对象或数组不能创造新的和原来数据相同的对象</p>
+</li>
+<li>
+<p>.RemoveAt(index)   对下标进行删除</p>
+</li>
+<li>
+<p>Clear()           清空</p>
+</li>
+<li>
+<p>.Insert(index,item)     在某一索引下插入元素</p>
+</li>
+<li>
+<p>.OrderBy(m=&gt;m)</p>
+</li>
+<li>
+<p>.Sum()</p>
+</li>
+<li>
+<p>.Max()</p>
+</li>
+<li>
+<p>.Min()</p>
+</li>
+<li>
+<p>.First(&quot;&quot;)   找到满足条件的第一个元素，如果没有找到会报错</p>
+</li>
+<li>
+<p>.FirstOrDefault(&quot;&quot;)    没有会返回默认数据</p>
+</li>
+<li>
+<p>.Any(&quot;&quot;)  判断是否至少有一个元素满足条件</p>
+</li>
+<li>
+<p>.All(&quot;&quot;)    检查集合中的所有数据是否都满足条件</p>
+</li>
+<li>
+<p>.Count(&quot;&quot;)  满足条件的所有元素的数量</p>
+</li>
+<li>
+<p>.OrderBy(&quot;&quot;)   升序排序</p>
+</li>
+<li>
+<p>.Take(n)  从头开始获取n个集合中的元素</p>
+</li>
+<li>
+<p>Skip(n)    忽略前n个取后面的全部元素</p>
+</li>
+</ul>
+<p>Lambada表达式:</p>
+<p>​	变量 =&gt; 条件</p>
+<p>var a = 1;       //a为int型，但是类型不会因为赋值而产生变化</p>
+<h2 id="数据库操作">数据库操作</h2>
+<img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20210330192108404.png" alt="image-20210330192108404" style="zoom:67%;" />
+<ol>
+<li>创建连接对象</li>
+<li>创建指令对象
+<ol>
+<li>绑定连接对象</li>
+<li>设置要执行的sql语句</li>
+</ol>
+</li>
+<li>关闭连接</li>
+</ol>
+<pre><code class="language-cs">    //1. 创建连接
+    SqlConnection con = new SqlConnection(@&quot;server=.;database=Login4;uid=sa;pwd=sa&quot;);
+    con.Open();
+    //2. 创建指令
+    //2.1 绑定连接对象
+    //2.2 设置要执行的sql语句
+    SqlCommand cmd = new SqlCommand()
+    {
+        Connection = con,
+        CommandText=&quot;&quot;
+    };
+    //执行sql并得到影响行数 insert update delete
+    Console.WriteLine(cmd.ExecuteNonQuery());
+    //cmd.ExecuteScalar()  执行查询语句,并返回第一行第一列的数据,其他数据会被忽略
+    //一般用在判断账号密码是否正确
+    Console.WriteLine((int)cmd.ExecuteScalar()==1?&quot;登录成功&quot;:&quot;账号密码有误&quot;);
+    //cmd.ExecuteReader()  用来执行查询语句,返回所有的查询结果
+    SqlDataReader dr = cmd.ExecuteReader();
+    //DataReader的执行过程,只进,只读
+    while (dr.Read())
+    {
+        Console.WriteLine($&quot;{dr[0]}{dr[&quot;Password&quot;]}{dr.GetDateTime(2).ToString(&quot;yyyy-MM-dd&quot;)}&quot;);
+    }
+    dr.Close();
+    //3. 关闭连接
+    con.Close();
+</code></pre>
+<h3 id="dbhelper">DBhelper</h3>
+<p>普通类：属性需要通过实例化才能使用</p>
+<p>静态：静态属性不需要实例化，要通过类名.方法/属性/字段调用。</p>
+<p>类如果被标识为static，则类里的所有成员（字段、属性、方法）都必须是静态的。</p>
 <h2 id="异常处理">异常处理</h2>
 <p>C# 异常处理时建立在四个关键词之上的：<strong>try</strong>、<strong>catch</strong>、<strong>finally</strong> 和 <strong>throw</strong>。</p>
 <ul>
@@ -1019,24 +1242,23 @@ finally
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[MVC入门]]></title>
+        <title type="html"><![CDATA[MVC]]></title>
         <id>https://kevin-lier.github.io/mvc/</id>
         <link href="https://kevin-lier.github.io/mvc/">
         </link>
         <updated>2021-02-24T09:31:01.000Z</updated>
-        <content type="html"><![CDATA[<blockquote>
-<p>为了公司实习学习MVC架构，一起看看吧</p>
-</blockquote>
-<h2 id="mvc结构"><strong>MVC结构</strong></h2>
+        <content type="html"><![CDATA[<h2 id="mvc结构"><strong>MVC结构</strong></h2>
 <ol>
 <li>App_Start</li>
 </ol>
 <ul>
-<li>Bundleconfig:<u>打包器</u></li>
-</ul>
+<li>
+<p>Bundleconfig:<u>打包器</u></p>
 <blockquote>
 <p>更新时按照固定的格式更换js文件</p>
 </blockquote>
+</li>
+</ul>
 <ul>
 <li>FilterConfig:<u>过滤器</u></li>
 <li>RouteConfig:<u>路由配置</u></li>
@@ -1056,6 +1278,8 @@ js文件</p>
 </li>
 <li>
 <p>MVC</p>
+</li>
+</ol>
 <ul>
 <li>
 <p>Models</p>
@@ -1068,21 +1292,131 @@ js文件</p>
 </li>
 <li>
 <p>Shared</p>
+<p>Layout 中的@renderbody即主题渲染,会用About中的文件替代</p>
 </li>
 </ul>
-<p>Layout 中的@renderbody即主题渲染,会用About中的文件替代</p>
 </li>
 <li>
 <p>Controllers</p>
 </li>
 </ul>
-</li>
-</ol>
 <blockquote>
 <p>由地址栏访问控制器 通过models过滤 view中过滤然后显示出来</p>
 </blockquote>
-<ol start="6">
-<li></li>
+<h3 id="post和get">Post和Get</h3>
+<p>用户访问网站为get方式,在提交某些数据后会通过post访问</p>
+<pre><code class="language-html">
+@{
+    ViewBag.Title = &quot;AddNumbers&quot;;
+    var total = 0;
+    var totalMessage = &quot;&quot;;
+    if (IsPost)
+    {
+
+        // Retrieve the numbers that the user entered.
+        var num1 = Request[&quot;text1&quot;];
+        var num2 = Request[&quot;text2&quot;];
+
+        // Convert the entered strings into integers numbers and add.
+        total = num1.AsInt() + num2.AsInt();
+        totalMessage = &quot;Total = &quot; + total;
+    }
+}
+
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;Add Numbers&lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        body {
+            background-color: beige;
+            font-family: Verdana, Arial;
+            margin: 50px;
+        }
+
+        form {
+            padding: 10px;
+            border-style: solid;
+            width: 250px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;Enter two whole numbers and then click &lt;strong&gt;Add&lt;/strong&gt;.&lt;/p&gt;
+    &lt;form action=&quot;&quot; method=&quot;post&quot;&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;text1&quot;&gt;First Number:&lt;/label&gt;
+            &lt;input type=&quot;text&quot; name=&quot;text1&quot; /&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;text2&quot;&gt;Second Number:&lt;/label&gt;
+            &lt;input type=&quot;text&quot; name=&quot;text2&quot; /&gt;
+        &lt;/p&gt;
+        &lt;p&gt;&lt;input type=&quot;submit&quot; value=&quot;Add&quot; /&gt;&lt;/p&gt;
+    &lt;/form&gt;
+
+    &lt;p&gt;@totalMessage&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>视图模板不应执行业务逻辑或直接与数据库交互</strong>。 相反，视图模板应仅适用于控制器为其提供的数据。</p>
+<p>ViewBag:   将控制器中的数据返回到视图页面.</p>
+<p>例如在cs中声明ViewBag.msg = &quot;hello world&quot;;   那么在cshtml中@ViewBag.msg就会显示hello world</p>
+<p>在控制器里面的数据怎么能在界面校验?</p>
+<p>类的实例化应该在哪里实现?</p>
+<p>httphelper 要用的时候查么?</p>
+<p>using的三个用法:</p>
+<ol>
+<li>
+<p>using+命名空间的名字</p>
+</li>
+<li>
+<p>using+别名</p>
+<p>​	using aClass=NameSpace1.MyClass</p>
+<p>​	using bClass=NameSpace2.MyClass</p>
+<p>​	好处是更加简洁</p>
+</li>
+<li>
+<p>using  定义一个范围,在结束时处理对象.</p>
+<p>用try catch也可以解决但是using更加方便</p>
+</li>
+</ol>
+<p>解决方案是使用 <code>BeginForm</code> 的重载，该重载指定 POST 请求应将搜索信息添加到 URL，并且应将其路由到该 <code>HttpGet</code> 方法的版本 <code>Index</code> 。 将现有的无参数 <code>BeginForm</code> 方法替换为以下标记：</p>
+<pre><code class="language-cshtml">@using (Html.BeginForm(&quot;Index&quot;,&quot;Movies&quot;,FormMethod.Get))
+</code></pre>
+<h2 id="构建解决方案">构建解决方案</h2>
+<ul>
+<li>Apps.Base
+<ul>
+<li>Apps.BLL (业务层)</li>
+<li>Apps.IBLL (业务层<strong>接口</strong>)</li>
+<li>Apps.DAL (数据层)</li>
+<li>Apps.IDAL (数据层<strong>接口</strong>)</li>
+</ul>
+</li>
+<li>Apps.Models (模型)</li>
+<li>Apps.Common(通用类库)</li>
+<li>Apps.Core (核心类库)</li>
+<li>Apps.Locale(多语言文件)</li>
+<li>Apps.WebApi(WebApi)</li>
+<li>Apps.Web(UI层)</li>
+</ul>
+<h2 id="实体">实体</h2>
+<ol>
+<li>
+<p>EF  操作数据库</p>
+</li>
+<li>
+<p>DTO  传输数据</p>
+<p>​	POCO原则(Plain Old C# Object扁平化C#类的对象)</p>
+<p>​	扁平化：不能有对象出现</p>
+</li>
+<li>
+<p>ViewModel   校验数据</p>
+</li>
 </ol>
 ]]></content>
     </entry>
