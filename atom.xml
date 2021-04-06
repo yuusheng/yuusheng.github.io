@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kevin-lier.github.io/</id>
     <title>AurorePolaire</title>
-    <updated>2021-04-06T09:13:08.563Z</updated>
+    <updated>2021-04-06T09:20:34.578Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kevin-lier.github.io/"/>
     <link rel="self" href="https://kevin-lier.github.io/atom.xml"/>
@@ -465,12 +465,12 @@ where cust.City == &quot;London&quot; || cust.City == &quot;Paris&quot;
         </link>
         <updated>2021-03-20T08:13:51.000Z</updated>
         <content type="html"><![CDATA[<h1 id="c基础语法">C#基础语法</h1>
-<h2 id="net">.NET</h2>
+<h2 id="一-net">一、.NET</h2>
 <ul>
 <li>.NET Framework(运行平台)</li>
 <li>Visual Studio(开发工具)</li>
 </ul>
-<h2 id="输入与输出">输入与输出</h2>
+<h2 id="二-输入与输出">二、输入与输出</h2>
 <p>​	输入: Console.ReadLine(&quot;输入语句&quot;);  输入时只能输入字符串类型,如果需要其他类型则需要强制类型转换: 类型.Parse(Console.ReadLine());</p>
 <p>​	输出:</p>
 <ul>
@@ -481,7 +481,7 @@ where cust.City == &quot;London&quot; || cust.City == &quot;Paris&quot;
 <pre><code class="language-cs">    Random random = new Random();
     int no = random.Next(1000, 2000);//max=2000,min=1000
 </code></pre>
-<h2 id="数组">数组</h2>
+<h2 id="三-数组">三、数组</h2>
 <h3 id="遍历数组">遍历数组</h3>
 <pre><code class="language-c#">foreach (int j in n)
 {
@@ -496,7 +496,7 @@ where cust.City == &quot;London&quot; || cust.City == &quot;Paris&quot;
 <li>下标从0开始</li>
 <li>数组中所有数据的类型相同</li>
 </ul>
-<h2 id="类">类</h2>
+<h2 id="四-类">四、类</h2>
 <p>​	<em>C#类的静态成员:类似于全局变量</em></p>
 <p>​	<em>静态函数只能访问静态变量 无法访问非静态变量</em></p>
 <p>类的成员：<strong>字段</strong>、<strong>属性</strong>、<strong>方法</strong></p>
@@ -588,7 +588,7 @@ static void Main(string[] args)
 </code></pre>
 <figure data-type="image" tabindex="1"><img src="https://kevin-lier.github.io//post-images/1617437554608.png" alt="" loading="lazy"></figure>
 <p>如果一个接口继承其他接口，那么实现类或结构就需要实现所有接口的成员。</p>
-<h2 id="字符串">字符串</h2>
+<h2 id="五-字符串">五、字符串</h2>
 <ul>
 <li>
 <p>在C#中可以认为字符串是一个字符数组</p>
@@ -613,7 +613,7 @@ static void Main(string[] args)
 <li>StringBuilder sb = new StringBuilder()  拼接字符串  用+来拼接字符串是非常耗费性能的。当字符串较多时，应使用新建StringBuilder对象调用Append(i)函数</li>
 </ul>
 <p>枚举：只能在枚举类中选择，不能出现不符合规则的值，保护了数据的有效性。</p>
-<h2 id="值类型-引用类型和装箱拆箱">值类型、引用类型和装箱拆箱</h2>
+<h2 id="六-值类型-引用类型和装箱拆箱">六、值类型、引用类型和装箱拆箱</h2>
 <h3 id="值类型">值类型</h3>
 <p><em>byte  short/char  int  long  float  double  decimal  bool  enum</em></p>
 <p>值类型在赋值时传递的是<strong>数值</strong>，修改任意一个数值时另外一个<strong>不会发生变化</strong></p>
@@ -631,7 +631,7 @@ static void Main(string[] args)
 <li>int c = (int)obj;   //比较浪费性能</li>
 </ul>
 <p>&quot;<strong>+</strong>&quot;拼接操作会开辟一个新的空间</p>
-<h2 id="集合">集合</h2>
+<h2 id="七-集合">七、集合</h2>
 <p>特点</p>
 <ul>
 <li>可以添加或删除元素(可以伸缩)</li>
@@ -641,7 +641,7 @@ static void Main(string[] args)
 <ul>
 <li>集合中装的是object  由于里式替换原则，不知道里面装的是什么，而拆箱和装箱的类型必须相同</li>
 </ul>
-<h2 id="集合泛型">集合泛型</h2>
+<h2 id="八-集合泛型">八、集合泛型</h2>
 <p>List<T> list = new List<T>;</p>
 <ul>
 <li>
@@ -706,7 +706,7 @@ static void Main(string[] args)
 <p>Lambada表达式:</p>
 <p>​	变量 =&gt; 条件</p>
 <p>var a = 1;       //a为int型，但是类型不会因为赋值而产生变化</p>
-<h2 id="数据库操作">数据库操作</h2>
+<h2 id="九-数据库操作">九、数据库操作</h2>
 <figure data-type="image" tabindex="3"><img src="https://kevin-lier.github.io//post-images/1617700371348.png" alt="" loading="lazy"></figure>
 <ol>
 <li>创建连接对象</li>
@@ -749,7 +749,7 @@ static void Main(string[] args)
 <p>普通类：属性需要通过实例化才能使用</p>
 <p>静态：静态属性不需要实例化，要通过类名.方法/属性/字段调用。</p>
 <p>类如果被标识为static，则类里的所有成员（字段、属性、方法）都必须是静态的。</p>
-<h2 id="异常处理">异常处理</h2>
+<h2 id="十-异常处理">十、异常处理</h2>
 <p>C# 异常处理时建立在四个关键词之上的：<strong>try</strong>、<strong>catch</strong>、<strong>finally</strong> 和 <strong>throw</strong>。</p>
 <ul>
 <li><strong>try</strong>：一个 try 块标识了一个将被激活的特定的异常的代码块。后跟一个或多个 catch 块。</li>
@@ -778,7 +778,7 @@ finally
    // 要执行的语句
 }
 </code></pre>
-<h2 id="异步">异步</h2>
+<h2 id="十一-异步">十一、异步</h2>
 <ul>
 <li>当某个操作需要花费大量的时间进行处理，若是使用同步编程，那么程序在等待响应的时间内不能处理其他事物，这样效率比较低；而使用异步编程时，在进行等待相应的时间内，程序可以<strong>利用等待的时间处理其他事物</strong>，当得到响应时，再回到响应处继续执行，这样程序的<strong>效率会更高</strong>。</li>
 </ul>
