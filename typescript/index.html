@@ -238,7 +238,7 @@
 <h3 id="interface">interface</h3>
 <p>对对象的形状(shape)进行描述</p>
 <p>Duck Typing：只要长得像鸭子，不管是什么东西，可以用它来描述各种概念上毫不相干的内容</p>
-<pre><code class="language-typescript">interface IPerson {
+<pre><code class="language-js">interface IPerson {
   readonly id: number; //只读
   name: string;
   age?: number; //  可选
@@ -251,7 +251,7 @@ let polaire: IPerson = {
 polaire.id = 123; //无法分配到 &quot;id&quot; ，因为它是只读属性
 </code></pre>
 <p>描述函数类型</p>
-<pre><code class="language-typescript">const add = (x: number = 1, y: number, z?: number) =&gt; {
+<pre><code class="language-js">const add = (x: number = 1, y: number, z?: number) =&gt; {
   if (typeof z === &quot;number&quot;) {
     return x + y + z;
   } else return x + y;
@@ -263,7 +263,7 @@ interface ISum {
 let add2:ISum = add
 </code></pre>
 <p>描述类的属性和方法</p>
-<pre><code class="language-typescript">interface IRadio {
+<pre><code class="language-js">interface IRadio {
   switchRadio(trigger: boolean): void;
 }
 interface IBattery {
@@ -284,11 +284,11 @@ class Cellphone implements IRadioWithBattery {
 <p>js中函数是一等公民</p>
 <p>ts中冒号后面都是在声明类型,和函数逻辑无关</p>
 <h3 id="类型推论-联合类型和类型断言">类型推论 联合类型和类型断言</h3>
-<pre><code class="language-typescript">// 声明联合类型
+<pre><code class="language-js">// 声明联合类型
 let numberOrString: number | string;
 </code></pre>
 <p>联合类型只能调用两者共有的方法或者属性，当我们必须要访问某个类型的方法时，我们要采用类型断言或者type guard。</p>
-<pre><code class="language-typescript">// 类型断言
+<pre><code class="language-js">// 类型断言
 function getLength(input: string | number): number {
   const str = input as string;   // 类型断言
   if (str.length) {
@@ -309,7 +309,7 @@ function getLength(input: string | number): number {
 }
 </code></pre>
 <h3 id="enum">enum</h3>
-<pre><code class="language-typescript">enum Direction {
+<pre><code class="language-js">enum Direction {
   Up,
   Down,
   Left,
@@ -320,7 +320,7 @@ console.log(Direction[0])
 </code></pre>
 <h3 id="泛型">泛型</h3>
 <p>在使用时才规定类型</p>
-<pre><code class="language-typescript">function echo&lt;T&gt;(arg: T): T {
+<pre><code class="language-js">function echo&lt;T&gt;(arg: T): T {
   return arg;
 }
 const result = echo('str')  // const result: &quot;str&quot;
@@ -332,7 +332,7 @@ function swap&lt;T, U&gt;(tuple: [T, U]): [U, T] {
 const result = swap(['polaire',11])  // const result: [number, string]
 </code></pre>
 <p>约束泛型（用extends继承接口满足含有某个特定的属性）</p>
-<pre><code class="language-typescript">interface IWithLength {
+<pre><code class="language-js">interface IWithLength {
   length: number;
 }
 function echoWithArr&lt;T extends IWithLength&gt;(arg: T): T {
@@ -342,7 +342,7 @@ function echoWithArr&lt;T extends IWithLength&gt;(arg: T): T {
 </code></pre>
 <p>泛型在类和接口的使用</p>
 <p>泛型会指定在容器中的数据类型</p>
-<pre><code class="language-typescript">class Queue&lt;T&gt; {
+<pre><code class="language-js">class Queue&lt;T&gt; {
   private data = [];
   push(item: T) {
     return this.data.push(item);
@@ -364,16 +364,16 @@ interface KeyPair&lt;T, U&gt; {
 let kp1: KeyPair&lt;number, string&gt; = { key: 1, value: &quot;polaire&quot; };
 </code></pre>
 <h3 id="类型别名-type-aliase">类型别名 type aliase</h3>
-<pre><code class="language-typescript">type StrOrNumber = string | number;
+<pre><code class="language-js">type StrOrNumber = string | number;
 let result: StrOrNumber = &quot;123&quot;;
 result = true; // 不能将类型“boolean”分配给类型“StrOrNumber”。
 </code></pre>
 <p>字面量：const str: 'name' = 'name'  新建一个str只能等于name</p>
-<pre><code class="language-typescript">type Directions = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT'
+<pre><code class="language-js">type Directions = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT'
 let toWhere: Directions = 'UP'
 </code></pre>
 <p>交叉类型</p>
-<pre><code class="language-typescript">interface IName {
+<pre><code class="language-js">interface IName {
   name: string;
 }
 type IPerson = IName &amp; { age: number };
@@ -397,7 +397,7 @@ let person: IPerson = { name: &quot;123&quot;, age: 123 };
 <ol>
 <li>数组解构</li>
 </ol>
-<pre><code class="language-typescript">let input = [1, 2];
+<pre><code class="language-js">let input = [1, 2];
 let [first, second] = input;js
 console.log(first); // outputs 1
 console.log(second); // outputs 2
