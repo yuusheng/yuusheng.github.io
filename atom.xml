@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kevin-lier.github.io/</id>
     <title>AurorePolaire</title>
-    <updated>2021-07-30T06:03:48.898Z</updated>
+    <updated>2021-08-04T00:12:46.109Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kevin-lier.github.io/"/>
     <link rel="self" href="https://kevin-lier.github.io/atom.xml"/>
@@ -10,6 +10,239 @@
     <logo>https://kevin-lier.github.io/images/avatar.png</logo>
     <icon>https://kevin-lier.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, AurorePolaire</rights>
+    <entry>
+        <title type="html"><![CDATA[TypeScript]]></title>
+        <id>https://kevin-lier.github.io/typescript/</id>
+        <link href="https://kevin-lier.github.io/typescript/">
+        </link>
+        <updated>2021-08-04T00:12:03.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="typescript">TypeScript</h1>
+<ul>
+<li>
+<p>动态类型语言(Dynamically Typed Language)</p>
+<p>运行期间自动分析变量类型</p>
+</li>
+<li>
+<p>静态类型语言(Statically Typed Language)</p>
+</li>
+<li>
+<p>数据变量类型在编译阶段</p>
+</li>
+</ul>
+<p>TypeScript: JavaScript that scales</p>
+<p>优点:</p>
+<ul>
+<li>程序更容易理解</li>
+<li>效率更高</li>
+<li>更少的错误</li>
+<li>兼容性很好</li>
+</ul>
+<h2 id="命令行">命令行</h2>
+<table>
+<thead>
+<tr>
+<th>命令行</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tsc greeter.ts</td>
+<td>编译</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="数据类型">数据类型</h2>
+<ul>
+<li>boolean</li>
+<li>null</li>
+<li>undefined</li>
+<li>number</li>
+<li>string</li>
+<li>any</li>
+</ul>
+<h3 id="数组">数组</h3>
+<p>同类型数据</p>
+<h3 id="元组">元组</h3>
+<pre><code class="language-typescript">let person: [number, string] = [1,'polaire']
+</code></pre>
+<h3 id="interface">interface</h3>
+<p>对对象的形状(shape)进行描述</p>
+<p>Duck Typing：只要长得像鸭子，不管是什么东西，可以用它来描述各种概念上毫不相干的内容</p>
+<pre><code class="language-typescript">interface IPerson {
+  readonly id: number; //只读
+  name: string;
+  age?: number; //  可选
+}
+let polaire: IPerson = {
+  id: 1,
+  name: &quot;polaire&quot;,
+  age: 1,
+};
+polaire.id = 123; //无法分配到 &quot;id&quot; ，因为它是只读属性
+</code></pre>
+<p>描述函数类型</p>
+<pre><code class="language-typescript">const add = (x: number = 1, y: number, z?: number) =&gt; {
+  if (typeof z === &quot;number&quot;) {
+    return x + y + z;
+  } else return x + y;
+};
+
+interface ISum {
+  (x: number, y: number, z?: number): number;
+}
+let add2:ISum = add
+</code></pre>
+<p>描述类的属性和方法</p>
+<pre><code class="language-typescript">interface IRadio {
+  switchRadio(trigger: boolean): void;
+}
+interface IBattery {
+  checkBatteryStatus(): void;
+}
+interface IRadioWithBattery extends IRadio, IBattery {}
+class Car implements IRadio {
+  switchRadio(trigger: boolean): void {}
+}
+class Cellphone implements IRadioWithBattery {
+  switchRadio(trigger: boolean): void {
+  }
+  checkBatteryStatus(): void {
+  }
+}
+</code></pre>
+<h3 id="函数">函数</h3>
+<p>js中函数是一等公民</p>
+<p>ts中冒号后面都是在声明类型,和函数逻辑无关</p>
+<h3 id="类型推论-联合类型和类型断言">类型推论 联合类型和类型断言</h3>
+<pre><code class="language-typescript">// 声明联合类型
+let numberOrString: number | string;
+</code></pre>
+<p>联合类型只能调用两者共有的方法或者属性，当我们必须要访问某个类型的方法时，我们要采用类型断言或者type guard。</p>
+<pre><code class="language-typescript">// 类型断言
+function getLength(input: string | number): number {
+  const str = input as string;   // 类型断言
+  if (str.length) {
+    return str.length;
+  } else {
+    const number = input as number;
+    return number.toString().length;
+  }
+}
+ 
+// type guard  条件语句可以自动缩小类型范围  typeof
+function getLength(input: string | number): number {
+  if (typeof input === &quot;string&quot;) {
+    return input.length;
+  } else {
+    return input.toString().length;
+  }
+}
+</code></pre>
+<h3 id="enum">enum</h3>
+<pre><code class="language-typescript">enum Direction {
+  Up,
+  Down,
+  Left,
+  Right,
+}
+console.log(Direction.Up)
+console.log(Direction[0])
+</code></pre>
+<h3 id="泛型">泛型</h3>
+<p>在使用时才规定类型</p>
+<pre><code class="language-typescript">function echo&lt;T&gt;(arg: T): T {
+  return arg;
+}
+const result = echo('str')  // const result: &quot;str&quot;
+const result: string = echo(&quot;str&quot;);
+
+function swap&lt;T, U&gt;(tuple: [T, U]): [U, T] {
+  return [tuple[1], tuple[0]];
+}
+const result = swap(['polaire',11])  // const result: [number, string]
+</code></pre>
+<p>约束泛型（用extends继承接口满足含有某个特定的属性）</p>
+<pre><code class="language-typescript">interface IWithLength {
+  length: number;
+}
+function echoWithArr&lt;T extends IWithLength&gt;(arg: T): T {
+  console.log(arg.length);
+  return arg;
+}
+</code></pre>
+<p>泛型在类和接口的使用</p>
+<p>泛型会指定在容器中的数据类型</p>
+<pre><code class="language-typescript">class Queue&lt;T&gt; {
+  private data = [];
+  push(item: T) {
+    return this.data.push(item);
+  }
+  pop(): T {
+    return this.data.shift();
+  }
+}
+
+const queue = new Queue&lt;number&gt;();
+queue.push(1);
+console.log(queue.pop().toFixed());
+
+interface KeyPair&lt;T, U&gt; {
+  key: T;
+  value: U;
+}
+
+let kp1: KeyPair&lt;number, string&gt; = { key: 1, value: &quot;polaire&quot; };
+</code></pre>
+<h3 id="类型别名-type-aliase">类型别名 type aliase</h3>
+<pre><code class="language-typescript">type StrOrNumber = string | number;
+let result: StrOrNumber = &quot;123&quot;;
+result = true; // 不能将类型“boolean”分配给类型“StrOrNumber”。
+</code></pre>
+<p>字面量：const str: 'name' = 'name'  新建一个str只能等于name</p>
+<pre><code class="language-typescript">type Directions = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT'
+let toWhere: Directions = 'UP'
+</code></pre>
+<p>交叉类型</p>
+<pre><code class="language-typescript">interface IName {
+  name: string;
+}
+type IPerson = IName &amp; { age: number };
+let person: IPerson = { name: &quot;123&quot;, age: 123 };
+</code></pre>
+<h3 id="声明文件">声明文件</h3>
+<h2 id="typescript变量声明">TypeScript变量声明</h2>
+<h3 id="变量声明">变量声明</h3>
+<ul>
+<li>
+<p>let	与JavaScript中var类似，但使用了<code>词法作用域</code>或<code>块作用域</code>，仅能在作用域内访问且不能在声明之前读或写（声明之前称为暂时性死区）。</p>
+<blockquote>
+<p>类型断言：let声明的any类型变量可以在调用时后面加上类型，这样编译器不会进行特殊的数据检查和解构</p>
+</blockquote>
+</li>
+<li>
+<p>const   声明之后不能再更改数值</p>
+</li>
+</ul>
+<h3 id="解构">解构</h3>
+<ol>
+<li>数组解构</li>
+</ol>
+<pre><code class="language-typescript">let input = [1, 2];
+let [first, second] = input;js
+console.log(first); // outputs 1
+console.log(second); // outputs 2
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Vue]]></title>
         <id>https://kevin-lier.github.io/vue/</id>
@@ -2040,185 +2273,6 @@ finally
         var newarr=[...arr,...arr2]
 </code></pre>
 <p>​		...展开数组</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[MVC]]></title>
-        <id>https://kevin-lier.github.io/mvc/</id>
-        <link href="https://kevin-lier.github.io/mvc/">
-        </link>
-        <updated>2021-02-24T09:31:01.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="mvc结构"><strong>MVC结构</strong></h2>
-<ol>
-<li>App_Start</li>
-</ol>
-<ul>
-<li>
-<p>Bundleconfig:<u>打包器</u></p>
-<blockquote>
-<p>更新时按照固定的格式更换js文件</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>FilterConfig:<u>过滤器</u></li>
-<li>RouteConfig:<u>路由配置</u></li>
-</ul>
-<ol start="2">
-<li>
-<p>Content<br>
-bootstrap的css样式和本身的site</p>
-</li>
-<li>
-<p>fonts<br>
-bootstrap 中的字体和图片</p>
-</li>
-<li>
-<p>Scripts<br>
-js文件</p>
-</li>
-<li>
-<p>MVC</p>
-</li>
-</ol>
-<ul>
-<li>
-<p>Models</p>
-</li>
-<li>
-<p>Views</p>
-<ul>
-<li>
-<p>Home       <em>与Controler一一对应</em></p>
-</li>
-<li>
-<p>Shared</p>
-<p>Layout 中的@renderbody即主题渲染,会用About中的文件替代</p>
-</li>
-</ul>
-</li>
-<li>
-<p>Controllers</p>
-</li>
-</ul>
-<blockquote>
-<p>由地址栏访问控制器 通过models过滤 view中过滤然后显示出来</p>
-</blockquote>
-<h3 id="post和get">Post和Get</h3>
-<p>用户访问网站为get方式,在提交某些数据后会通过post访问</p>
-<pre><code class="language-html">
-@{
-    ViewBag.Title = &quot;AddNumbers&quot;;
-    var total = 0;
-    var totalMessage = &quot;&quot;;
-    if (IsPost)
-    {
-
-        // Retrieve the numbers that the user entered.
-        var num1 = Request[&quot;text1&quot;];
-        var num2 = Request[&quot;text2&quot;];
-
-        // Convert the entered strings into integers numbers and add.
-        total = num1.AsInt() + num2.AsInt();
-        totalMessage = &quot;Total = &quot; + total;
-    }
-}
-
-
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;title&gt;Add Numbers&lt;/title&gt;
-    &lt;meta charset=&quot;utf-8&quot; /&gt;
-    &lt;style type=&quot;text/css&quot;&gt;
-        body {
-            background-color: beige;
-            font-family: Verdana, Arial;
-            margin: 50px;
-        }
-
-        form {
-            padding: 10px;
-            border-style: solid;
-            width: 250px;
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;p&gt;Enter two whole numbers and then click &lt;strong&gt;Add&lt;/strong&gt;.&lt;/p&gt;
-    &lt;form action=&quot;&quot; method=&quot;post&quot;&gt;
-        &lt;p&gt;
-            &lt;label for=&quot;text1&quot;&gt;First Number:&lt;/label&gt;
-            &lt;input type=&quot;text&quot; name=&quot;text1&quot; /&gt;
-        &lt;/p&gt;
-        &lt;p&gt;
-            &lt;label for=&quot;text2&quot;&gt;Second Number:&lt;/label&gt;
-            &lt;input type=&quot;text&quot; name=&quot;text2&quot; /&gt;
-        &lt;/p&gt;
-        &lt;p&gt;&lt;input type=&quot;submit&quot; value=&quot;Add&quot; /&gt;&lt;/p&gt;
-    &lt;/form&gt;
-
-    &lt;p&gt;@totalMessage&lt;/p&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p><strong>视图模板不应执行业务逻辑或直接与数据库交互</strong>。 相反，视图模板应仅适用于控制器为其提供的数据。</p>
-<p>ViewBag:   将控制器中的数据返回到视图页面.</p>
-<p>例如在cs中声明ViewBag.msg = &quot;hello world&quot;;   那么在cshtml中@ViewBag.msg就会显示hello world</p>
-<p>在控制器里面的数据怎么能在界面校验?</p>
-<p>类的实例化应该在哪里实现?</p>
-<p>httphelper 要用的时候查么?</p>
-<p>using的三个用法:</p>
-<ol>
-<li>
-<p>using+命名空间的名字</p>
-</li>
-<li>
-<p>using+别名</p>
-<p>​	using aClass=NameSpace1.MyClass</p>
-<p>​	using bClass=NameSpace2.MyClass</p>
-<p>​	好处是更加简洁</p>
-</li>
-<li>
-<p>using  定义一个范围,在结束时处理对象.</p>
-<p>用try catch也可以解决但是using更加方便</p>
-</li>
-</ol>
-<p>解决方案是使用 <code>BeginForm</code> 的重载，该重载指定 POST 请求应将搜索信息添加到 URL，并且应将其路由到该 <code>HttpGet</code> 方法的版本 <code>Index</code> 。 将现有的无参数 <code>BeginForm</code> 方法替换为以下标记：</p>
-<pre><code class="language-cshtml">@using (Html.BeginForm(&quot;Index&quot;,&quot;Movies&quot;,FormMethod.Get))
-</code></pre>
-<h2 id="构建解决方案">构建解决方案</h2>
-<ul>
-<li>Apps.Base
-<ul>
-<li>Apps.BLL (业务层)</li>
-<li>Apps.IBLL (业务层<strong>接口</strong>)</li>
-<li>Apps.DAL (数据层)</li>
-<li>Apps.IDAL (数据层<strong>接口</strong>)</li>
-</ul>
-</li>
-<li>Apps.Models (模型)</li>
-<li>Apps.Common(通用类库)</li>
-<li>Apps.Core (核心类库)</li>
-<li>Apps.Locale(多语言文件)</li>
-<li>Apps.WebApi(WebApi)</li>
-<li>Apps.Web(UI层)</li>
-</ul>
-<h2 id="实体">实体</h2>
-<ol>
-<li>
-<p>EF  操作数据库</p>
-</li>
-<li>
-<p>DTO  传输数据</p>
-<p>​	POCO原则(Plain Old C# Object扁平化C#类的对象)</p>
-<p>​	扁平化：不能有对象出现</p>
-</li>
-<li>
-<p>ViewModel   校验数据</p>
-</li>
-</ol>
 ]]></content>
     </entry>
 </feed>
