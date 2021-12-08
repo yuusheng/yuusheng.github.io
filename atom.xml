@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kevin-lier.github.io/</id>
     <title>AurorePolaire</title>
-    <updated>2021-08-04T08:41:48.255Z</updated>
+    <updated>2021-12-08T13:05:42.089Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kevin-lier.github.io/"/>
     <link rel="self" href="https://kevin-lier.github.io/atom.xml"/>
@@ -2273,6 +2273,206 @@ finally
         var newarr=[...arr,...arr2]
 </code></pre>
 <p>​		...展开数组</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MVC]]></title>
+        <id>https://kevin-lier.github.io/mvc/</id>
+        <link href="https://kevin-lier.github.io/mvc/">
+        </link>
+        <updated>2021-02-24T09:31:01.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="mvc结构"><strong>MVC结构</strong></h2>
+<ol>
+<li>App_Start</li>
+</ol>
+<ul>
+<li>
+<p>Bundleconfig:<u>打包器</u></p>
+<blockquote>
+<p>更新时按照固定的格式更换js文件</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>FilterConfig:<u>过滤器</u></li>
+<li>RouteConfig:<u>路由配置</u></li>
+</ul>
+<ol start="2">
+<li>
+<p>Content<br>
+bootstrap的css样式和本身的site</p>
+</li>
+<li>
+<p>fonts<br>
+bootstrap 中的字体和图片</p>
+</li>
+<li>
+<p>Scripts<br>
+js文件</p>
+</li>
+<li>
+<p>MVC</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>Models</p>
+</li>
+<li>
+<p>Views</p>
+<ul>
+<li>
+<p>Home       <em>与Controler一一对应</em></p>
+</li>
+<li>
+<p>Shared</p>
+<p>Layout 中的@renderbody即主题渲染,会用About中的文件替代</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Controllers</p>
+</li>
+</ul>
+<blockquote>
+<p>由地址栏访问控制器 通过models过滤 view中过滤然后显示出来</p>
+</blockquote>
+<h3 id="post和get">Post和Get</h3>
+<p>用户访问网站为get方式,在提交某些数据后会通过post访问</p>
+<pre><code class="language-html">
+@{
+    ViewBag.Title = &quot;AddNumbers&quot;;
+    var total = 0;
+    var totalMessage = &quot;&quot;;
+    if (IsPost)
+    {
+
+        // Retrieve the numbers that the user entered.
+        var num1 = Request[&quot;text1&quot;];
+        var num2 = Request[&quot;text2&quot;];
+
+        // Convert the entered strings into integers numbers and add.
+        total = num1.AsInt() + num2.AsInt();
+        totalMessage = &quot;Total = &quot; + total;
+    }
+}
+
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;Add Numbers&lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        body {
+            background-color: beige;
+            font-family: Verdana, Arial;
+            margin: 50px;
+        }
+
+        form {
+            padding: 10px;
+            border-style: solid;
+            width: 250px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;Enter two whole numbers and then click &lt;strong&gt;Add&lt;/strong&gt;.&lt;/p&gt;
+    &lt;form action=&quot;&quot; method=&quot;post&quot;&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;text1&quot;&gt;First Number:&lt;/label&gt;
+            &lt;input type=&quot;text&quot; name=&quot;text1&quot; /&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for=&quot;text2&quot;&gt;Second Number:&lt;/label&gt;
+            &lt;input type=&quot;text&quot; name=&quot;text2&quot; /&gt;
+        &lt;/p&gt;
+        &lt;p&gt;&lt;input type=&quot;submit&quot; value=&quot;Add&quot; /&gt;&lt;/p&gt;
+    &lt;/form&gt;
+
+    &lt;p&gt;@totalMessage&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>视图模板不应执行业务逻辑或直接与数据库交互</strong>。 相反，视图模板应仅适用于控制器为其提供的数据。</p>
+<p>ViewBag:   将控制器中的数据返回到视图页面.</p>
+<p>例如在cs中声明ViewBag.msg = &quot;hello world&quot;;   那么在cshtml中@ViewBag.msg就会显示hello world</p>
+<p>在控制器里面的数据怎么能在界面校验?</p>
+<p>类的实例化应该在哪里实现?</p>
+<p>httphelper 要用的时候查么?</p>
+<p>using的三个用法:</p>
+<ol>
+<li>
+<p>using+命名空间的名字</p>
+</li>
+<li>
+<p>using+别名</p>
+<p>​	using aClass=NameSpace1.MyClass</p>
+<p>​	using bClass=NameSpace2.MyClass</p>
+<p>​	好处是更加简洁</p>
+</li>
+<li>
+<p>using  定义一个范围,在结束时处理对象.</p>
+<p>用try catch也可以解决但是using更加方便</p>
+</li>
+</ol>
+<p>解决方案是使用 <code>BeginForm</code> 的重载，该重载指定 POST 请求应将搜索信息添加到 URL，并且应将其路由到该 <code>HttpGet</code> 方法的版本 <code>Index</code> 。 将现有的无参数 <code>BeginForm</code> 方法替换为以下标记：</p>
+<pre><code class="language-cshtml">@using (Html.BeginForm(&quot;Index&quot;,&quot;Movies&quot;,FormMethod.Get))
+</code></pre>
+<h2 id="构建解决方案">构建解决方案</h2>
+<ul>
+<li>Apps.Base
+<ul>
+<li>Apps.BLL (业务层)</li>
+<li>Apps.IBLL (业务层<strong>接口</strong>)</li>
+<li>Apps.DAL (数据层)</li>
+<li>Apps.IDAL (数据层<strong>接口</strong>)</li>
+</ul>
+</li>
+<li>Apps.Models (模型)</li>
+<li>Apps.Common(通用类库)</li>
+<li>Apps.Core (核心类库)</li>
+<li>Apps.Locale(多语言文件)</li>
+<li>Apps.WebApi(WebApi)</li>
+<li>Apps.Web(UI层)</li>
+</ul>
+<h2 id="实体">实体</h2>
+<ol>
+<li>
+<p>EF  操作数据库</p>
+</li>
+<li>
+<p>DTO  传输数据</p>
+<p>​	POCO原则(Plain Old C# Object扁平化C#类的对象)</p>
+<p>​	扁平化：不能有对象出现</p>
+</li>
+<li>
+<p>ViewModel   校验数据</p>
+</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于]]></title>
+        <id>https://kevin-lier.github.io/about/</id>
+        <link href="https://kevin-lier.github.io/about/">
+        </link>
+        <updated>2021-01-25T11:09:48.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
+</blockquote>
+<h2 id="关于本站">🏠 关于本站</h2>
+<p>​	这是一个个人博客</p>
+<h2 id="博主是谁">👨‍💻 博主是谁</h2>
+<p>​	 博主是一个在校大学生</p>
+<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
+<p>​	 兴趣爱好有点多诶 喜欢音乐喜欢编程 喜欢看偶像剧😜<br>
+​	 最喜欢的明星是iu(漂亮还有才华也太棒了)<br>
+​	 最喜欢的韩剧是《爱的迫降》《当你沉睡时》</p>
+<h2 id="联系我呀">📬 联系我呀</h2>
+<p>​	 724845656@qq.com</p>
 ]]></content>
     </entry>
 </feed>
