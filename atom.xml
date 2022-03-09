@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kevin-lier.github.io/</id>
     <title>AurorePolaire</title>
-    <updated>2022-03-07T07:04:08.297Z</updated>
+    <updated>2022-03-09T02:50:44.074Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kevin-lier.github.io/"/>
     <link rel="self" href="https://kevin-lier.github.io/atom.xml"/>
@@ -10,6 +10,209 @@
     <logo>https://kevin-lier.github.io/images/avatar.png</logo>
     <icon>https://kevin-lier.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, AurorePolaire</rights>
+    <entry>
+        <title type="html"><![CDATA[Vue script setup ts踩坑——v-model双向绑定]]></title>
+        <id>https://kevin-lier.github.io/vue-script-setup-ts-cai-keng-v-model-shuang-xiang-bang-ding/</id>
+        <link href="https://kevin-lier.github.io/vue-script-setup-ts-cai-keng-v-model-shuang-xiang-bang-ding/">
+        </link>
+        <updated>2022-03-09T02:50:03.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="vue-script-setup-ts踩坑v-model双向绑定">Vue script setup ts踩坑——v-model双向绑定</h1>
+<blockquote>
+<p>在Vue中我们常常使用v-model来绑定组件的内容，尤其在输入框中较为常见，但v-model的具体原理是什么，这篇文章就带你了解清楚。</p>
+</blockquote>
+<p>v-model的作用是用来双向绑定，他的实际原理是首先父组件传props给子组件，子组件接受到值之后如果值有变化（这里可以是input、click等造成props值发生改变），向父组件触发emit事件，使父组件同时改变自己的值。</p>
+<p>下面直接上代码</p>
+<blockquote>
+<p>以下为目录结构</p>
+<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/kevin-lier/picgo/img/20220309102158.png" alt="" loading="lazy"></figure>
+</blockquote>
+<h2 id="1-父组件传值">1、父组件传值</h2>
+<p>父组件</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;VModel :fatherProps=&quot;fatherContents&quot;&gt;&lt;/VModel&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import { ref } from 'vue'
+import VModel from './components/VModel.vue'
+
+const fatherContents = ref(&quot;this is father's content&quot;)
+&lt;/script&gt;
+</code></pre>
+<p>子组件</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;input type=&quot;text&quot; :childProps=&quot;fatherProps&quot; /&gt;
+  &lt;hr /&gt;
+  &lt;p&gt;{{ fatherProps }}&lt;/p&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+const props = defineProps({
+  fatherProps: {
+    type: String,
+    default: '',
+  },
+})
+&lt;/script&gt;
+
+&lt;style&gt;
+input {
+  display: block;
+}
+&lt;/style&gt;
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/kevin-lier/picgo/img/20220309102443.png" alt="" loading="lazy"></figure>
+<h2 id="2-子组件emit事件">2、子组件emit事件</h2>
+<p>父组件</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;VModel :fatherProps=&quot;fatherContents&quot; @childInputChange=&quot;fatherResponse&quot;&gt;&lt;/VModel&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import { ref } from 'vue'
+import VModel from './components/VModel.vue'
+
+const fatherContents = ref(&quot;this is father's content&quot;)
+
+const fatherResponse = (data: string) =&gt; {
+  console.log('father response the emit event, and the data is:', data)
+  fatherContents.value = data
+}
+&lt;/script&gt;
+</code></pre>
+<p>子组件</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;input type=&quot;text&quot; :childProps=&quot;fatherProps&quot; @input=&quot;childEvent&quot; /&gt;
+  &lt;hr /&gt;
+  &lt;p&gt;{{ fatherProps }}&lt;/p&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+const props = defineProps({
+  fatherProps: {
+    type: String,
+    default: '',
+  },
+})
+
+// 定义触发事件
+const emits = defineEmits&lt;{
+  (e: 'childInputChange', data: string): void
+}&gt;()
+
+const childEvent = (e: Event) =&gt; {
+  let childEventContent = (e.target as HTMLInputElement).value
+  emits('childInputChange', childEventContent)
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+input {
+  display: block;
+}
+&lt;/style&gt;
+
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/kevin-lier/picgo/img/20220309103329.png" alt="" loading="lazy"></figure>
+<p>此时我们已经可以看到子组件已经可以监听父组件的输入并且可以绑定输入的值了，此时我们已经实现了双向绑定。</p>
+<p>接下来我们看看v-model</p>
+<h2 id="3-v-model">3、v-model</h2>
+<pre><code class="language-vue">  &lt;!-- &lt;VModel :fatherProps=&quot;fatherContents&quot; @childInputChange=&quot;fatherResponse&quot;&gt;&lt;/VModel&gt; --&gt;
+  &lt;VModel v-model=&quot;fatherContents&quot;&gt;&lt;/VModel&gt;
+</code></pre>
+<p>当我们尝试把v-model的值改为fatherContents</p>
+<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/kevin-lier/picgo/img/20220309103749.png" alt="" loading="lazy"></figure>
+<p>我们会发现子组件此时已经无法接收到父组件传的props，这其实是由于v-model本身其实是一个modelValue，也就是我们子组件props的名字<strong>必须为modelValue</strong>才能接收到v-model传递的值</p>
+<p>![image-20220309104011496](/Users/yuusheng/Library/Application Support/typora-user-images/image-20220309104011496.png)</p>
+<p>接下来我们修改子组件代码</p>
+<p>子组件：</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;!-- &lt;input type=&quot;text&quot; :childProps=&quot;fatherProps&quot; @input=&quot;childEvent&quot; /&gt; --&gt;
+  &lt;input type=&quot;text&quot; :childProps=&quot;modelValue&quot; @input=&quot;childEvent&quot; /&gt;
+  &lt;hr /&gt;
+  &lt;!-- &lt;p&gt;{{ fatherProps }}&lt;/p&gt; --&gt;
+  &lt;p&gt;modelValue: {{ modelValue }}&lt;/p&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+const props = defineProps({
+  // fatherProps: {
+  //   type: String,
+  //   default: '',
+  // },
+  modelValue: {
+    type: String,
+    default: '',
+  },
+})
+
+const emits = defineEmits&lt;{
+  (e: 'childInputChange', data: string): void
+}&gt;()
+
+const childEvent = (e: Event) =&gt; {
+  let childEventContent = (e.target as HTMLInputElement).value
+  emits('childInputChange', childEventContent)
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+input {
+  display: block;
+}
+&lt;/style&gt;
+</code></pre>
+<p>![image-20220309104217593](/Users/yuusheng/Library/Application Support/typora-user-images/image-20220309104217593.png)</p>
+<p>这时子组件已经接受到父组件传来的<code>father's content</code>，但是当我们输入内容时</p>
+<figure data-type="image" tabindex="5"><img src="https://cdn.jsdelivr.net/gh/kevin-lier/picgo/img/20220309104346.png" alt="" loading="lazy"></figure>
+<p>发现modelValue的值并没有发生改变。</p>
+<p>事实上，想要改变modelValue也需要特定的emit方法：<code>update:modelValue</code>。我们将emit中的方法名字改为update:modelValue</p>
+<p>子组件：</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;!-- &lt;input type=&quot;text&quot; :childProps=&quot;fatherProps&quot; @input=&quot;childEvent&quot; /&gt; --&gt;
+  &lt;input type=&quot;text&quot; :childProps=&quot;modelValue&quot; @input=&quot;childEvent&quot; /&gt;
+  &lt;hr /&gt;
+  &lt;!-- &lt;p&gt;{{ fatherProps }}&lt;/p&gt; --&gt;
+  &lt;p&gt;modelValue: {{ modelValue }}&lt;/p&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+const props = defineProps({
+  // fatherProps: {
+  //   type: String,
+  //   default: '',
+  // },
+  modelValue: {
+    type: String,
+    default: '',
+  },
+})
+
+const emits = defineEmits&lt;{
+  // (e: 'childInputChange', data: string): void
+  (e: 'update:modelValue', data: string): void
+}&gt;()
+
+const childEvent = (e: Event) =&gt; {
+  let childEventContent = (e.target as HTMLInputElement).value
+  // emits('childInputChange', childEventContent)
+  emits('update:modelValue', childEventContent)
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+input {
+  display: block;
+}
+&lt;/style&gt;
+
+</code></pre>
+<figure data-type="image" tabindex="6"><img src="https://cdn.jsdelivr.net/gh/kevin-lier/picgo/img/20220309104648.png" alt="" loading="lazy"></figure>
+<p>这时我们就成功实现了父子组件中的v-model双向绑定。</p>
+<p>后：</p>
+<p>以上问题是笔者在编写组件库时遇到的问题，网络上面的资料很多方法、变量名相同的，很容易搞混，这篇文章中所有变量名都有自己的含义，希望能帮到遇到同样问题的你。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[TypeScript]]></title>
         <id>https://kevin-lier.github.io/typescript/</id>
